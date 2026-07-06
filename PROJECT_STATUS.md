@@ -10,7 +10,7 @@
 
 ## 0. 2026-07-06 결정사항 (개발전확인사항0706.md 반영)
 
-- **판형**: 188×257mm **유지** (A5 전환 요청 있었으나 기존 완성작 보호를 위해 유지로 확정)
+- **판형**: ~~188×257mm 유지~~ → **A5(148×210mm)로 최종 변경** (같은 날 대화 중 재확인 후 뒤집힘 — 기존 188×257mm 완성작은 A5 기준으로 재작업 필요)
 - **인쇄 방식**: 풀컬러 → **2도인쇄로 전환 확정** — 표지 등 기존 풀컬러 디자인 재설계 필요 (⏳ 예정, 아래 "다음 할 일" 참고)
 - **Git 버전관리**: 로컬 repo 생성 완료, 매 개발 완료 시 `https://github.com/ch9712311231-dot/youdontwanna` 로 push
 - **개발일지/원칙 시스템**: `개발일지.md`(모든 Q&A 기록), `원칙.md`(사용자가 명시적으로 "원칙으로 만들어"라 한 규칙만 등록, 충돌 시 확인 후 진행) 신설
@@ -76,29 +76,47 @@
 
 ```
 C:\임용AtoZ\
-├─ src\book.html          ← 전체 페이지 원본(모든 <section class="page">가 한 페이지)
-├─ src\book.css            ← 디자인 시스템 전체(색상·타이포·컴포넌트 전부 여기)
-├─ render.js                ← book.html → PDF 변환 스크립트 (puppeteer-core + Edge)
-├─ build_web.js             ← book.html → 자기완결형 웹 미리보기 HTML 변환 스크립트
-├─ assets\logo\             ← 해커스임용 로고 PNG (color/black/white)
-├─ assets\fonts\             ← Pretendard 원본 폰트(전체 글립셋, PDF용)
-├─ assets\fonts_subset\      ← Pretendard 서브셋 폰트(웹뷰어 전용, ~240KB)
-├─ _source\pdf_tool.py       ← 레퍼런스 PDF를 PNG로 렌더링/텍스트 추출하는 유틸(PyMuPDF)
-├─ _source\excel_dump.txt    ← 모집인원 엑셀 원본 덤프
+├─ src\parts\               ← ★ 실제 원고 수정은 여기서! 목차 챕터별로 파일 분리됨(아래 표 참고)
+├─ src\book.html            ← build_book.js가 parts/*를 합쳐 자동 생성하는 산출물 — 직접 수정 금지
+├─ src\book.css              ← 디자인 시스템 전체(색상·타이포·컴포넌트 전부 여기)
+├─ build_book.js             ← src\parts\*.html(목차 순서) → src\book.html 병합 스크립트
+├─ render.js                 ← book.html → PDF 변환 스크립트 (puppeteer-core + Edge)
+├─ build_web.js              ← book.html → 자기완결형 웹 미리보기 HTML 변환 스크립트
+├─ assets\logo\              ← 해커스임용 로고 PNG (color/black/white)
+├─ assets\fonts\              ← Pretendard 원본 폰트(전체 글립셋, PDF용)
+├─ assets\fonts_subset\       ← Pretendard 서브셋 폰트(웹뷰어 전용, ~240KB)
+├─ _source\pdf_tool.py        ← 레퍼런스 PDF를 PNG로 렌더링/텍스트 추출하는 유틸(PyMuPDF)
+├─ _source\excel_dump.txt     ← 모집인원 엑셀 원본 덤프
 ├─ output\임용합격로드맵_draft.pdf   ← 최종 PDF 산출물
 ├─ output\임용합격로드맵_web.html   ← 더블클릭으로 여는 독립형 웹 뷰어(폰트·이미지 base64 내장)
 └─ output\_artifact_fragment.html ← Artifact 게시 전용(래퍼 없는 조각)
 ```
 
+### src\parts\ 목차 매핑 (build_book.js의 manifest 순서 = 실제 페이지 순서)
+
+| 파일 | 목차 위치 |
+|---|---|
+| `00_cover.html` | 표지 |
+| `01_toc.html` | 목차 |
+| `02_part1_cover.html` | PART 1 간지 |
+| `03_ch01_exam-intro.html` | ① 임용 시험이란? |
+| `04_ch02_basic-conditions.html` | ② 중등 임용시험의 기본 조건 (+교원자격이란?) |
+| `05_ch03_korean-history.html` | ③ 한국사능력검정 (오태진 강사 원고, 5페이지) |
+| `06_ch04_subjects-scoring.html` | ④ 시험 과목·문항수·배점·출제범위 |
+| `07_ch05_recruitment-trend.html` | ⑤ 모집인원 추이 (2페이지) |
+| `08_part2_cover.html` | PART 2 간지 |
+| `09_pedagogy_mockup.html` | PART 2 교육학 가안(레이아웃 템플릿) |
+
 ## 6. 빌드 방법
 
 ```bash
 cd C:\임용AtoZ
-node render.js book.html <출력파일명>.pdf   # PDF 재생성 → output/ 폴더
+node build_book.js                             # src\parts\* → src\book.html 병합 (★ 항상 제일 먼저)
+node render.js book.html <출력파일명>.pdf       # PDF 재생성 → output/ 폴더
 node build_web.js                              # 웹 뷰어 재생성 → output/ 폴더
 ```
 
-**book.html 또는 book.css를 수정하면 위 두 명령을 반드시 둘 다 다시 실행할 것** — 하나만 하면 다른 산출물이 구버전으로 남습니다.
+**src\parts\ 안의 파일 또는 book.css를 수정하면 위 세 명령을 반드시 순서대로 다시 실행할 것** — 하나라도 건너뛰면 다른 산출물이 구버전으로 남습니다.
 
 - 판형: 트림 188×257mm + 도련 3mm = 작업 194×263mm.
 - 색상: 브랜드 시안 `#00ACC8` 기준 팔레트(`--brand`, `--brand-deep`, `--brand-ink`, `--sky-50~300`), `book.css`의 `:root`에 정의.
@@ -124,9 +142,10 @@ node build_web.js                              # 웹 뷰어 재생성 → output
 
 ## 9. 다음 할 일
 
-1. **2도인쇄 전환** — `book.css`의 브랜드 컬러(하늘색 그라데이션 등 풀컬러) 전체를 2도인쇄 기준(브랜드 시안색 1도 + 검정/톤온톤 또는 별색 1도)으로 재설계. 표지·본문 컴포넌트(`.blk`, `.credit`, `.tag`, `.ychart` 등) 전부 영향받음.
-2. **PART 2 과목별 합격 전략 원고 도착 시** — `instructor` 카드 + 본문 페이지를 과목 수만큼 추가해 50페이지 내외로 확장(교육학 예시가 템플릿).
-3. 과목 페이지가 늘어날 때마다 목차(TOC)와 각 페이지 folio 번호를 순서대로 재정렬.
-4. (선택) 실물 인쇄용 도련(3mm) 재단선 가이드 추가 여부 확인.
-5. (선택) 엑셀의 지원인원·경쟁률·합격선 데이터까지 반영하고 싶다면 ⑤ 뒤에 페이지 추가(소스는 `_source/excel_dump.txt`).
-6. 매 개발 세션 완료 시 `https://github.com/ch9712311231-dot/youdontwanna` 로 push.
+1. **A5 판형 전환** — 표지·목차·PART1(①~⑤) 레이아웃 전체를 148×210mm 기준으로 재설계 (여백·폰트 크기·카드 그리드 등 재계산 필요)
+2. **2도인쇄 전환** — `book.css`의 브랜드 컬러(하늘색 그라데이션 등 풀컬러) 전체를 2도인쇄 기준(브랜드 시안색 1도 + 검정/톤온톤 또는 별색 1도)으로 재설계. 표지·본문 컴포넌트(`.blk`, `.credit`, `.tag`, `.ychart` 등) 전부 영향받음.
+3. **PART 2 과목별 합격 전략 원고 도착 시** — `instructor` 카드 + 본문 페이지를 과목 수만큼 추가해 50페이지 내외로 확장(교육학 예시가 템플릿).
+4. 과목 페이지가 늘어날 때마다 목차(TOC)와 각 페이지 folio 번호를 순서대로 재정렬.
+6. (선택) 실물 인쇄용 도련(3mm) 재단선 가이드 추가 여부 확인.
+7. (선택) 엑셀의 지원인원·경쟁률·합격선 데이터까지 반영하고 싶다면 ⑤ 뒤에 페이지 추가(소스는 `_source/excel_dump.txt`).
+8. 매 개발 세션 완료 시 `https://github.com/ch9712311231-dot/youdontwanna` 로 push.
