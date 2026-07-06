@@ -5,23 +5,10 @@ const path = require('path');
 
 const partsDir = path.join(__dirname, 'src', 'parts');
 const outPath = path.join(__dirname, 'src', 'book.html');
-
-// 목차(TOC) 순서 그대로. 파일명 앞자리 번호가 이 순서와 어긋나지 않도록 유지할 것.
-const manifest = [
-  '00_cover.html',
-  '01_toc.html',
-  '02_part1_cover.html',
-  '03_ch01_exam-intro.html',
-  '04_ch02_basic-conditions.html',
-  '05_ch03_korean-history.html',
-  '06_ch04_subjects-scoring.html',
-  '07_ch05_recruitment-trend.html',
-  '08_part2_cover.html',
-  '09_pedagogy_mockup.html',
-];
+const manifest = require('./parts.manifest');
 
 const body = manifest
-  .map(name => fs.readFileSync(path.join(partsDir, name), 'utf8').trim())
+  .map(({ file }) => fs.readFileSync(path.join(partsDir, file), 'utf8').trim())
   .join('\n\n');
 
 const html = `<!DOCTYPE html>

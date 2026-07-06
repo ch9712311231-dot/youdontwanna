@@ -79,9 +79,11 @@ C:\임용AtoZ\
 ├─ src\parts\               ← ★ 실제 원고 수정은 여기서! 목차 챕터별로 파일 분리됨(아래 표 참고)
 ├─ src\book.html            ← build_book.js가 parts/*를 합쳐 자동 생성하는 산출물 — 직접 수정 금지
 ├─ src\book.css              ← 디자인 시스템 전체(색상·타이포·컴포넌트 전부 여기)
-├─ build_book.js             ← src\parts\*.html(목차 순서) → src\book.html 병합 스크립트
-├─ render.js                 ← book.html → PDF 변환 스크립트 (puppeteer-core + Edge)
-├─ build_web.js              ← book.html → 자기완결형 웹 미리보기 HTML 변환 스크립트
+├─ parts.manifest.js         ← src\parts\*.html의 순서·라벨 정의(단일 소스 — build_book.js/build_parts_preview.js 공용)
+├─ build_book.js             ← src\parts\*.html(목차 순서) → src\book.html 병합 스크립트 (★취합 요청 시에만 실행)
+├─ build_parts_preview.js    ← src\parts\*.html 각각 → output\parts\*.html 독립 미리보기 생성 (★평소 작업은 이것만)
+├─ render.js                 ← book.html → PDF 변환 스크립트 (puppeteer-core + Edge, ★취합 요청 시에만 실행)
+├─ build_web.js              ← book.html → 자기완결형 웹 미리보기 HTML 변환 스크립트 (★취합 요청 시에만 실행)
 ├─ assets\logo\              ← 해커스임용 로고 PNG (color/black/white)
 ├─ assets\fonts\              ← Pretendard 원본 폰트(전체 글립셋, PDF용)
 ├─ assets\fonts_subset\       ← Pretendard 서브셋 폰트(웹뷰어 전용, ~240KB)
@@ -107,16 +109,27 @@ C:\임용AtoZ\
 | `08_part2_cover.html` | PART 2 간지 |
 | `09_pedagogy_mockup.html` | PART 2 교육학 가안(레이아웃 템플릿) |
 
-## 6. 빌드 방법
+## 6. 빌드 방법 / 작업 워크플로우
 
-```bash
-cd C:\임용AtoZ
-node build_book.js                             # src\parts\* → src\book.html 병합 (★ 항상 제일 먼저)
-node render.js book.html <출력파일명>.pdf       # PDF 재생성 → output/ 폴더
-node build_web.js                              # 웹 뷰어 재생성 → output/ 폴더
-```
+**원칙: 챕터 내용을 수정하는 동안은 해당 `src\parts\*.html` 파일만 건드리고, 최종본(`src\book.html`·PDF·전체 웹뷰어) 병합은 사용자가 "취합/최종본 만들어줘"라고 명시적으로 요청할 때만 진행한다.** (2026-07-06 확정 — 개발일지 참고)
 
-**src\parts\ 안의 파일 또는 book.css를 수정하면 위 세 명령을 반드시 순서대로 다시 실행할 것** — 하나라도 건너뛰면 다른 산출물이 구버전으로 남습니다.
+- **부분 수정 후 바로 확인하고 싶을 때** (평소 작업 방식)
+  ```bash
+  node build_parts_preview.js   # src\parts\*.html 각각 → output\parts\*.html (챕터별 독립 미리보기, 더블클릭으로 열림)
+  ```
+  수정한 챕터의 `output\parts\<파일명>.html`만 다시 열어보면 됨. book.html·PDF·전체 웹뷰어는 건드리지 않음.
+
+- **모든 수정이 끝나고 "최종본으로 취합해줘"라고 요청받았을 때만** 아래 3개를 순서대로 실행
+  ```bash
+  node build_book.js                             # src\parts\* → src\book.html 병합
+  node render.js book.html <출력파일명>.pdf       # PDF 재생성 → output/ 폴더
+  node build_web.js                              # 통합 웹 뷰어 재생성 → output/ 폴더
+  ```
+
+## 6-1. 산출물 경로 정리
+
+- `output\parts\<파트파일명>.html` — 챕터별 부분 미리보기(항상 최신 유지, 부분 수정 시마다 재생성)
+- `output\임용합격로드맵_web.html` / `output\임용합격로드맵_draft.pdf` — **취합 요청 시에만** 갱신되는 최종 산출물(과거 버전일 수 있음, 항상 최신이라고 가정하지 말 것)
 
 - 판형: 트림 188×257mm + 도련 3mm = 작업 194×263mm.
 - 색상: 브랜드 시안 `#00ACC8` 기준 팔레트(`--brand`, `--brand-deep`, `--brand-ink`, `--sky-50~300`), `book.css`의 `:root`에 정의.
