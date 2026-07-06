@@ -1,4 +1,4 @@
-// 188mm x 257mm 판형으로 src/book.html -> output/*.pdf 렌더링
+// A5(148mm x 210mm) 판형 + 도련 3mm 기준으로 src/book.html -> output/*.pdf 렌더링
 const path = require('path');
 const puppeteer = require('puppeteer-core');
 
@@ -20,8 +20,8 @@ async function main() {
 
   await page.pdf({
     path: outputPath,
-    width: '194mm',
-    height: '263mm',
+    width: '154mm',
+    height: '216mm',
     printBackground: true,
     margin: { top: 0, bottom: 0, left: 0, right: 0 },
     pageRanges: '',
