@@ -36,7 +36,7 @@ const screenCss = `
   body{background:var(--pv-bg); min-height:100vh; padding:0 0 80px;}
   #book-scroll{overflow-x:auto;}
   #book-deck{width:max-content; margin:0 auto; padding-top:24px; display:flex; flex-direction:column; align-items:center; gap:16px;}
-  #book-deck .page{box-shadow:0 10px 34px rgba(0,0,0,.32); border-radius:1.5mm;}
+  #book-deck .page{border-radius:1.5mm;}
   #pv-bar{position:sticky; top:0; z-index:50; background:var(--pv-bar-bg); color:var(--pv-bar-fg); font-family:'Pretendard',sans-serif;
     padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     border-bottom:1px solid var(--pv-bar-line); box-shadow:0 2px 14px rgba(0,0,0,.16);}
@@ -51,7 +51,20 @@ for (const { file, label } of manifest) {
     const abs = path.join(root, 'assets', 'logo', fname);
     return `src="${toDataUri(abs, 'image/png')}"`;
   });
-  const pageCount = (html.match(/class="page/g) || []).length;
+  const pages = html.match(/<section class="page[\s\S]*?<\/section>/g) || [];
+  const pageCount = pages.length;
+
+  // 두 페이지 이상인 챕터는 두 페이지씩(spread) 짝지어 보여줌 — 1페이지 챕터는 그대로 단면 표시
+  let deckHtml;
+  if (pageCount >= 2) {
+    let spreads = '';
+    for (let i = 0; i < pages.length; i += 2) {
+      spreads += `<div class="spread">\n${pages.slice(i, i + 2).join('\n')}\n</div>\n`;
+    }
+    deckHtml = spreads;
+  } else {
+    deckHtml = html;
+  }
 
   const standalone = `<!doctype html>
 <html lang="ko">
@@ -67,7 +80,7 @@ ${screenCss}
 <body>
 <div id="pv-bar"><span class="t">${label} · 부분 미리보기</span><span class="m">${pageCount}페이지 · src/parts/${file}</span></div>
 <div id="book-scroll"><div id="book-deck">
-${html}
+${deckHtml}
 </div></div>
 </body>
 </html>

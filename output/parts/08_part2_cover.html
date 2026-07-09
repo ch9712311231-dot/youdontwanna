@@ -88,6 +88,21 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .page.verso{padding-left:var(--in-out); padding-right:var(--in-in);}
 .page.nopad{padding:0;}
 
+/* ── 두 페이지 보기(spread) — 화면 미리보기 전용. PDF(render.js)는 .spread 래퍼가 없는
+   낱장 그대로 출력되므로 아래 규칙의 영향을 받지 않음. ── */
+.deck{width:max-content; margin:0 auto; display:flex; flex-direction:column; gap:8mm;}
+.spread{display:flex; gap:0; box-shadow:0 6mm 18mm rgba(0,0,0,.35);}
+.spread .page{page-break-after:auto;}
+/* 제본 여백(gutter)은 펼침면 위치로 결정 — 왼쪽면(verso)은 안쪽(=오른쪽), 오른쪽면(recto)은 안쪽(=왼쪽) */
+.spread .page:first-child{padding-left:var(--in-out); padding-right:var(--in-in);}
+.spread .page:last-child{padding-left:var(--in-in); padding-right:var(--in-out);}
+.spread .page:only-child{padding-left:var(--in-in); padding-right:var(--in-out);}
+.spread .page:first-child .folio{flex-direction:row-reverse;}
+@media screen{
+  .spread .page:first-child{box-shadow:inset -3mm 0 4mm -3mm rgba(0,0,0,.18);}
+  .spread .page:last-child{box-shadow:inset 3mm 0 4mm -3mm rgba(0,0,0,.18);}
+}
+
 .folio{margin-top:auto; padding-top:2.2mm; border-top:.35mm solid var(--line);
   display:flex; justify-content:space-between; align-items:baseline;
   font-size:var(--fs-xs); color:var(--muted); letter-spacing:.02em;}
@@ -139,6 +154,17 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
   display:flex; justify-content:space-between; align-items:center;}
 .cover .footer .footer-logo{height:7mm; display:block;}
 .cover .footer .yr{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
+
+/* ── 뒤표지 (임시 디자인 — 실제 문구 도착 시 교체) ── */
+.cover.back-cover .binner{position:relative; z-index:2; height:100%; width:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 14mm;}
+.cover.back-cover .blogo{height:13mm; margin-bottom:8mm;}
+.cover.back-cover .btag{font-size:11pt; font-weight:700; color:var(--brand-ink); line-height:1.6; max-width:100mm;}
+.cover.back-cover .bbarcode{margin-top:14mm; width:34mm; height:16mm; border:.5mm dashed var(--sky-300);
+  border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; text-align:center;
+  font-size:6.4pt; color:var(--muted); line-height:1.4;}
+.cover.back-cover .bsite{position:absolute; left:0; right:0; bottom:10mm; z-index:2; text-align:center;
+  font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
 .part-cover{background:linear-gradient(155deg,#0E93A8 0%,#0A6E80 100%);
@@ -341,7 +367,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   body{background:var(--pv-bg); min-height:100vh; padding:0 0 80px;}
   #book-scroll{overflow-x:auto;}
   #book-deck{width:max-content; margin:0 auto; padding-top:24px; display:flex; flex-direction:column; align-items:center; gap:16px;}
-  #book-deck .page{box-shadow:0 10px 34px rgba(0,0,0,.32); border-radius:1.5mm;}
+  #book-deck .page{border-radius:1.5mm;}
   #pv-bar{position:sticky; top:0; z-index:50; background:var(--pv-bar-bg); color:var(--pv-bar-fg); font-family:'Pretendard',sans-serif;
     padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     border-bottom:1px solid var(--pv-bar-line); box-shadow:0 2px 14px rgba(0,0,0,.16);}
