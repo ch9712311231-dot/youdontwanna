@@ -47,8 +47,8 @@ const screenCss = `
 
 for (const { file, label } of manifest) {
   let html = fs.readFileSync(path.join(partsDir, file), 'utf8');
-  html = html.replace(/src="\.\.\/assets\/logo\/([^"]+)"/g, (m, fname) => {
-    const abs = path.join(root, 'assets', 'logo', fname);
+  html = html.replace(/src="\.\.\/assets\/(logo|img)\/([^"]+)"/g, (m, dir, fname) => {
+    const abs = path.join(root, 'assets', dir, fname);
     return `src="${toDataUri(abs, 'image/png')}"`;
   });
   const pages = html.match(/<section class="page[\s\S]*?<\/section>/g) || [];

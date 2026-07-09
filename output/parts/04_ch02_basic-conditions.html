@@ -102,6 +102,9 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
   .spread .page:first-child{box-shadow:inset -3mm 0 4mm -3mm rgba(0,0,0,.18);}
   .spread .page:last-child{box-shadow:inset 3mm 0 4mm -3mm rgba(0,0,0,.18);}
 }
+/* 표지·목차처럼 단독으로 서야 하는 페이지 — 인쇄 관례상 오른쪽(recto)에서 시작, 왼쪽은 빈 면.
+   화면 미리보기 전용(build_web.js가 삽입) — PDF에는 없는 요소. */
+.page.blank{background:var(--white); box-shadow:none;}
 
 .folio{margin-top:auto; padding-top:2.2mm; border-top:.35mm solid var(--line);
   display:flex; justify-content:space-between; align-items:baseline;
@@ -134,7 +137,15 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover .ribbon-cap{position:absolute; top:24mm; left:8mm; width:27mm; z-index:3;
   font-size:5pt; color:var(--brand-ink); opacity:.7; line-height:1.5; font-weight:600;}
 
-.cover .inner{position:relative; z-index:2; padding:40mm 12mm 0 12mm; width:100%;}
+/* QR 코드 자리(추후 반영) — 우측 상단, 홈페이지 바로가기 라벨 포함 */
+.cover .qrspot{position:absolute; top:10mm; right:12mm; z-index:3;
+  display:flex; flex-direction:column; align-items:center; gap:1.6mm;}
+.cover .qrspot .qrbox{width:24mm; height:24mm; border:.5mm dashed var(--sky-300); border-radius:var(--r-sm);
+  background:rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center;
+  text-align:center; font-size:6pt; color:var(--muted); line-height:1.4;}
+.cover .qrspot .qrlabel{font-size:6.5pt; font-weight:700; color:var(--brand-deep); opacity:.8; letter-spacing:.01em;}
+
+.cover .inner{position:relative; z-index:2; padding:40mm 12mm 0 8mm; width:100%;}
 .cover .eyebrow{display:inline-flex; align-items:center; background:rgba(255,255,255,.92);
   color:var(--brand-deep); font-weight:800; font-size:11pt; letter-spacing:.01em;
   padding:2.9mm 6.5mm; border-radius:var(--r-pill); box-shadow:0 1.2mm 3mm rgba(10,74,92,.08);}
@@ -150,21 +161,37 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover .desc .d-main{font-size:11pt; font-weight:700; line-height:1.62;}
 .cover .desc .d-sub{margin-top:2.4mm; padding-top:2.4mm; border-top:.3mm solid rgba(10,74,92,.2);
   font-size:9pt; font-weight:600; color:var(--brand-deep); opacity:.88; line-height:1.55;}
-.cover .footer{position:absolute; left:12mm; right:12mm; bottom:10mm; z-index:2;
+.cover .footer{position:absolute; left:8mm; right:12mm; bottom:10mm; z-index:2;
   display:flex; justify-content:space-between; align-items:center;}
 .cover .footer .footer-logo{height:7mm; display:block;}
+.cover .footer .fcontact{display:flex; flex-direction:column; align-items:flex-end; gap:1mm;}
+.cover .footer .fphone{font-weight:700; color:var(--brand-ink); font-size:8pt; letter-spacing:.02em;}
 .cover .footer .yr{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
-/* ── 뒤표지 (임시 디자인 — 실제 문구 도착 시 교체) ── */
-.cover.back-cover .binner{position:relative; z-index:2; height:100%; width:100%;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 14mm;}
-.cover.back-cover .blogo{height:13mm; margin-bottom:8mm;}
-.cover.back-cover .btag{font-size:11pt; font-weight:700; color:var(--brand-ink); line-height:1.6; max-width:100mm;}
-.cover.back-cover .bbarcode{margin-top:14mm; width:34mm; height:16mm; border:.5mm dashed var(--sky-300);
+/* ── 뒤표지 (임시 디자인 — 실제 문구 도착 시 교체)
+   글자 배치: 레퍼런스(실물 "해커스임용 합격로드맵" 뒤표지)를 참고 — 타이틀·서브타이틀 박스·본문은
+   좌측 상단에 앞표지와 동일한 글자 디자인(색상·굵기)으로 배치. 로고·연락처·홈페이지는 기존 위치
+   (우측 상단 로고 / 우측 하단 바코드·연락처)를 그대로 유지. ── */
+.cover.back-cover .blogo{position:absolute; left:8mm; bottom:11mm; z-index:2; height:7mm;}
+.cover.back-cover .btop{position:relative; z-index:2; padding:14mm 13mm 0 7mm;}
+.cover.back-cover .btitle{font-weight:900; font-size:30pt; line-height:1.08; letter-spacing:-.03em;}
+.cover.back-cover .btitle .t1{color:var(--brand-ink);}
+.cover.back-cover .btitle .t2{color:var(--brand);}
+.cover.back-cover .bsubtitle{margin-top:7mm; display:inline-block; background:var(--brand-ink);
+  color:var(--white); font-weight:700; font-size:9.5pt; padding:2.4mm 5.5mm; border-radius:1.6mm;}
+.cover.back-cover .bbody{margin-top:10mm; max-width:128mm; color:var(--brand-ink); font-size:11pt;
+  font-weight:500; line-height:1.6;}
+.cover.back-cover .bbody p{margin:0;}
+.cover.back-cover .bbody p.gap{margin-top:.8em;}
+.cover.back-cover .bbody .bold{font-weight:800;}
+.cover.back-cover .bfoot{position:absolute; right:13mm; bottom:11mm; z-index:2;
+  display:flex; flex-direction:column; align-items:flex-end; gap:3mm;}
+.cover.back-cover .bcontact{display:flex; flex-direction:column; align-items:flex-end; gap:1mm;}
+.cover.back-cover .bphone{font-weight:700; color:var(--brand-ink); font-size:8pt; letter-spacing:.02em;}
+.cover.back-cover .bbarcode{width:34mm; height:16mm; border:.5mm dashed var(--sky-300);
   border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; text-align:center;
   font-size:6.4pt; color:var(--muted); line-height:1.4;}
-.cover.back-cover .bsite{position:absolute; left:0; right:0; bottom:10mm; z-index:2; text-align:center;
-  font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
+.cover.back-cover .bsite{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
 .part-cover{background:linear-gradient(155deg,#0E93A8 0%,#0A6E80 100%);
@@ -183,16 +210,20 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .part-cover .plist .pi b{font-weight:800; color:var(--white); font-size:9.5pt; width:6mm;}
 
 /* ── 목차 ── */
-.toc-head{display:flex; align-items:center; gap:3.6mm; margin-bottom:5.8mm;}
-.toc-head .badge{background:var(--brand); color:var(--white); font-weight:800; font-size:12pt;
-  padding:2.9mm 5mm; border-radius:var(--r-lg); transform:rotate(-2deg);}
-.toc-head h1{font-size:17pt; font-weight:800; color:var(--brand-ink);}
+.toc-head{position:relative; width:100%; height:15mm; margin-bottom:4.4mm;}
+.toc-head .toc-band{position:absolute; inset:0; background:var(--brand); border-radius:var(--r-sm);}
+.toc-head .toc-art{position:absolute; left:4mm; top:50%; transform:translateY(-50%);
+  height:19.5mm; width:auto; z-index:1;}
 .toc-group{margin-bottom:5mm;}
-.toc-group .gh{display:flex; align-items:center; gap:2.2mm; background:var(--sky-100);
-  border-radius:var(--r-md); padding:2.2mm 3.6mm; margin-bottom:2.2mm;}
-.toc-group .gh .gn{background:var(--brand-deep); color:#fff; font-weight:800; font-size:8pt;
-  border-radius:var(--r-pill); padding:1mm 3mm;}
-.toc-group .gh .gt{font-weight:800; color:var(--brand-ink); font-size:10.5pt;}
+.toc-group .gh{display:flex; align-items:flex-end; justify-content:space-between; gap:3mm;
+  padding-bottom:1.8mm; margin-bottom:2.6mm; border-bottom:.6mm solid var(--brand);}
+.toc-group .gh .gtag{display:flex; flex-direction:column; gap:.3mm;}
+.toc-group .gh .gtag .gpre{font-size:6.6pt; font-weight:700; color:var(--muted); letter-spacing:.02em;}
+.toc-group .gh .gtag .gn{font-size:12.5pt; font-weight:800; color:var(--brand-ink); letter-spacing:-.01em;}
+.toc-group .gh .gdesc{display:flex; align-items:center; gap:1.6mm; font-size:8.6pt; font-weight:700; color:var(--brand-deep);}
+.toc-group .gh .gdesc svg{width:4.2mm; height:4.2mm; flex-shrink:0;}
+.toc-group .gh .gdesc .flag-pole{fill:none; stroke:var(--brand); stroke-width:1.6; stroke-linecap:round;}
+.toc-group .gh .gdesc .flag-flag{fill:var(--brand);}
 .toc-list{display:flex; flex-direction:column;}
 .toc-list .ti{display:flex; align-items:baseline; gap:2.2mm; padding:1.8mm 1.5mm;
   border-bottom:.3mm dashed var(--line); font-size:var(--fs-body);}

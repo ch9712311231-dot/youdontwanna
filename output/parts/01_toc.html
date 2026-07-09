@@ -102,6 +102,9 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
   .spread .page:first-child{box-shadow:inset -3mm 0 4mm -3mm rgba(0,0,0,.18);}
   .spread .page:last-child{box-shadow:inset 3mm 0 4mm -3mm rgba(0,0,0,.18);}
 }
+/* 표지·목차처럼 단독으로 서야 하는 페이지 — 인쇄 관례상 오른쪽(recto)에서 시작, 왼쪽은 빈 면.
+   화면 미리보기 전용(build_web.js가 삽입) — PDF에는 없는 요소. */
+.page.blank{background:var(--white); box-shadow:none;}
 
 .folio{margin-top:auto; padding-top:2.2mm; border-top:.35mm solid var(--line);
   display:flex; justify-content:space-between; align-items:baseline;
@@ -134,7 +137,15 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover .ribbon-cap{position:absolute; top:24mm; left:8mm; width:27mm; z-index:3;
   font-size:5pt; color:var(--brand-ink); opacity:.7; line-height:1.5; font-weight:600;}
 
-.cover .inner{position:relative; z-index:2; padding:40mm 12mm 0 12mm; width:100%;}
+/* QR 코드 자리(추후 반영) — 우측 상단, 홈페이지 바로가기 라벨 포함 */
+.cover .qrspot{position:absolute; top:10mm; right:12mm; z-index:3;
+  display:flex; flex-direction:column; align-items:center; gap:1.6mm;}
+.cover .qrspot .qrbox{width:24mm; height:24mm; border:.5mm dashed var(--sky-300); border-radius:var(--r-sm);
+  background:rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center;
+  text-align:center; font-size:6pt; color:var(--muted); line-height:1.4;}
+.cover .qrspot .qrlabel{font-size:6.5pt; font-weight:700; color:var(--brand-deep); opacity:.8; letter-spacing:.01em;}
+
+.cover .inner{position:relative; z-index:2; padding:40mm 12mm 0 8mm; width:100%;}
 .cover .eyebrow{display:inline-flex; align-items:center; background:rgba(255,255,255,.92);
   color:var(--brand-deep); font-weight:800; font-size:11pt; letter-spacing:.01em;
   padding:2.9mm 6.5mm; border-radius:var(--r-pill); box-shadow:0 1.2mm 3mm rgba(10,74,92,.08);}
@@ -150,21 +161,37 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover .desc .d-main{font-size:11pt; font-weight:700; line-height:1.62;}
 .cover .desc .d-sub{margin-top:2.4mm; padding-top:2.4mm; border-top:.3mm solid rgba(10,74,92,.2);
   font-size:9pt; font-weight:600; color:var(--brand-deep); opacity:.88; line-height:1.55;}
-.cover .footer{position:absolute; left:12mm; right:12mm; bottom:10mm; z-index:2;
+.cover .footer{position:absolute; left:8mm; right:12mm; bottom:10mm; z-index:2;
   display:flex; justify-content:space-between; align-items:center;}
 .cover .footer .footer-logo{height:7mm; display:block;}
+.cover .footer .fcontact{display:flex; flex-direction:column; align-items:flex-end; gap:1mm;}
+.cover .footer .fphone{font-weight:700; color:var(--brand-ink); font-size:8pt; letter-spacing:.02em;}
 .cover .footer .yr{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
-/* ── 뒤표지 (임시 디자인 — 실제 문구 도착 시 교체) ── */
-.cover.back-cover .binner{position:relative; z-index:2; height:100%; width:100%;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 14mm;}
-.cover.back-cover .blogo{height:13mm; margin-bottom:8mm;}
-.cover.back-cover .btag{font-size:11pt; font-weight:700; color:var(--brand-ink); line-height:1.6; max-width:100mm;}
-.cover.back-cover .bbarcode{margin-top:14mm; width:34mm; height:16mm; border:.5mm dashed var(--sky-300);
+/* ── 뒤표지 (임시 디자인 — 실제 문구 도착 시 교체)
+   글자 배치: 레퍼런스(실물 "해커스임용 합격로드맵" 뒤표지)를 참고 — 타이틀·서브타이틀 박스·본문은
+   좌측 상단에 앞표지와 동일한 글자 디자인(색상·굵기)으로 배치. 로고·연락처·홈페이지는 기존 위치
+   (우측 상단 로고 / 우측 하단 바코드·연락처)를 그대로 유지. ── */
+.cover.back-cover .blogo{position:absolute; left:8mm; bottom:11mm; z-index:2; height:7mm;}
+.cover.back-cover .btop{position:relative; z-index:2; padding:14mm 13mm 0 7mm;}
+.cover.back-cover .btitle{font-weight:900; font-size:30pt; line-height:1.08; letter-spacing:-.03em;}
+.cover.back-cover .btitle .t1{color:var(--brand-ink);}
+.cover.back-cover .btitle .t2{color:var(--brand);}
+.cover.back-cover .bsubtitle{margin-top:7mm; display:inline-block; background:var(--brand-ink);
+  color:var(--white); font-weight:700; font-size:9.5pt; padding:2.4mm 5.5mm; border-radius:1.6mm;}
+.cover.back-cover .bbody{margin-top:10mm; max-width:128mm; color:var(--brand-ink); font-size:11pt;
+  font-weight:500; line-height:1.6;}
+.cover.back-cover .bbody p{margin:0;}
+.cover.back-cover .bbody p.gap{margin-top:.8em;}
+.cover.back-cover .bbody .bold{font-weight:800;}
+.cover.back-cover .bfoot{position:absolute; right:13mm; bottom:11mm; z-index:2;
+  display:flex; flex-direction:column; align-items:flex-end; gap:3mm;}
+.cover.back-cover .bcontact{display:flex; flex-direction:column; align-items:flex-end; gap:1mm;}
+.cover.back-cover .bphone{font-weight:700; color:var(--brand-ink); font-size:8pt; letter-spacing:.02em;}
+.cover.back-cover .bbarcode{width:34mm; height:16mm; border:.5mm dashed var(--sky-300);
   border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; text-align:center;
   font-size:6.4pt; color:var(--muted); line-height:1.4;}
-.cover.back-cover .bsite{position:absolute; left:0; right:0; bottom:10mm; z-index:2; text-align:center;
-  font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
+.cover.back-cover .bsite{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
 .part-cover{background:linear-gradient(155deg,#0E93A8 0%,#0A6E80 100%);
@@ -183,16 +210,20 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .part-cover .plist .pi b{font-weight:800; color:var(--white); font-size:9.5pt; width:6mm;}
 
 /* ── 목차 ── */
-.toc-head{display:flex; align-items:center; gap:3.6mm; margin-bottom:5.8mm;}
-.toc-head .badge{background:var(--brand); color:var(--white); font-weight:800; font-size:12pt;
-  padding:2.9mm 5mm; border-radius:var(--r-lg); transform:rotate(-2deg);}
-.toc-head h1{font-size:17pt; font-weight:800; color:var(--brand-ink);}
+.toc-head{position:relative; width:100%; height:15mm; margin-bottom:4.4mm;}
+.toc-head .toc-band{position:absolute; inset:0; background:var(--brand); border-radius:var(--r-sm);}
+.toc-head .toc-art{position:absolute; left:4mm; top:50%; transform:translateY(-50%);
+  height:19.5mm; width:auto; z-index:1;}
 .toc-group{margin-bottom:5mm;}
-.toc-group .gh{display:flex; align-items:center; gap:2.2mm; background:var(--sky-100);
-  border-radius:var(--r-md); padding:2.2mm 3.6mm; margin-bottom:2.2mm;}
-.toc-group .gh .gn{background:var(--brand-deep); color:#fff; font-weight:800; font-size:8pt;
-  border-radius:var(--r-pill); padding:1mm 3mm;}
-.toc-group .gh .gt{font-weight:800; color:var(--brand-ink); font-size:10.5pt;}
+.toc-group .gh{display:flex; align-items:flex-end; justify-content:space-between; gap:3mm;
+  padding-bottom:1.8mm; margin-bottom:2.6mm; border-bottom:.6mm solid var(--brand);}
+.toc-group .gh .gtag{display:flex; flex-direction:column; gap:.3mm;}
+.toc-group .gh .gtag .gpre{font-size:6.6pt; font-weight:700; color:var(--muted); letter-spacing:.02em;}
+.toc-group .gh .gtag .gn{font-size:12.5pt; font-weight:800; color:var(--brand-ink); letter-spacing:-.01em;}
+.toc-group .gh .gdesc{display:flex; align-items:center; gap:1.6mm; font-size:8.6pt; font-weight:700; color:var(--brand-deep);}
+.toc-group .gh .gdesc svg{width:4.2mm; height:4.2mm; flex-shrink:0;}
+.toc-group .gh .gdesc .flag-pole{fill:none; stroke:var(--brand); stroke-width:1.6; stroke-linecap:round;}
+.toc-group .gh .gdesc .flag-flag{fill:var(--brand);}
 .toc-list{display:flex; flex-direction:column;}
 .toc-list .ti{display:flex; align-items:baseline; gap:2.2mm; padding:1.8mm 1.5mm;
   border-bottom:.3mm dashed var(--line); font-size:var(--fs-body);}
@@ -383,12 +414,21 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 <!-- ============ 02. 목차 ============ -->
 <section class="page">
   <div class="toc-head">
-    <div class="badge">목차</div>
-    <h1>CONTENTS</h1>
+    <div class="toc-band"></div>
+    <img class="toc-art" src="data:image/png;base64,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" alt="목차">
   </div>
 
   <div class="toc-group">
-    <div class="gh"><span class="gn">PART 1</span><span class="gt">중등 임용고시 이해하기</span></div>
+    <div class="gh">
+      <div class="gtag"><span class="gpre">해커스임용</span><span class="gn">합격 로드맵 01</span></div>
+      <div class="gdesc">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path class="flag-pole" d="M5 3v18"/>
+          <path class="flag-flag" d="M5 4c3-1.6 5 1.6 8 0s5 1.6 5 1.6v7.6s-2-1.6-5 0-5-1.6-8 0z"/>
+        </svg>
+        <span>중등 임용고시 이해하기</span>
+      </div>
+    </div>
     <div class="toc-list">
       <div class="ti"><span class="tn">01</span><span class="tt">임용 시험이란?</span><span class="tp">008</span></div>
       <div class="ti"><span class="tn">02</span><span class="tt">중등 임용시험의 기본 조건</span><span class="tp">010</span></div>
@@ -399,12 +439,21 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="toc-group">
-    <div class="gh"><span class="gn">PART 2</span><span class="gt">과목별 선생님이 전하는 합격 전략</span></div>
+    <div class="gh">
+      <div class="gtag"><span class="gpre">해커스임용</span><span class="gn">합격 로드맵 02</span></div>
+      <div class="gdesc">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path class="flag-pole" d="M5 3v18"/>
+          <path class="flag-flag" d="M5 4c3-1.6 5 1.6 8 0s5 1.6 5 1.6v7.6s-2-1.6-5 0-5-1.6-8 0z"/>
+        </svg>
+        <span>과목별 선생님이 전하는 합격 전략</span>
+      </div>
+    </div>
     <div class="toc-list">
-      <div class="ti"><span class="tn">01</span><span class="tt">교육학 — 합격 전략</span><span class="tp">017</span></div>
-      <div class="ti"><span class="tn">02</span><span class="tt">국어 — 합격 전략</span><span class="tp">···</span></div>
-      <div class="ti"><span class="tn">03</span><span class="tt">영어 — 합격 전략</span><span class="tp">···</span></div>
-      <div class="ti"><span class="tn">04</span><span class="tt">수학 — 합격 전략</span><span class="tp">···</span></div>
+      <div class="ti"><span class="tn">01</span><span class="tt">교육학 합격 전략</span><span class="tp">017</span></div>
+      <div class="ti"><span class="tn">02</span><span class="tt">국어 합격 전략</span><span class="tp">···</span></div>
+      <div class="ti"><span class="tn">03</span><span class="tt">영어 합격 전략</span><span class="tp">···</span></div>
+      <div class="ti"><span class="tn">04</span><span class="tt">수학 합격 전략</span><span class="tp">···</span></div>
       <div class="ti"><span class="tn">…</span><span class="tt">과목별 원고 순차 반영 예정</span><span class="tp">···</span></div>
     </div>
   </div>

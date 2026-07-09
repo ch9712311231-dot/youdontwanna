@@ -23,9 +23,9 @@ css = css.replace(/url\('\.\.\/assets\/fonts\/([^']+)'\)/g, (m, fname) => {
   return `url('${toDataUri(abs, 'font/woff2')}')`;
 });
 
-// 이미지(로고) 인라인
-const inlineLogo = (str) => str.replace(/src="\.\.\/assets\/logo\/([^"]+)"/g, (m, fname) => {
-  const abs = path.join(root, 'assets', 'logo', fname);
+// 이미지(로고·본문 이미지) 인라인
+const inlineLogo = (str) => str.replace(/src="\.\.\/assets\/(logo|img)\/([^"]+)"/g, (m, dir, fname) => {
+  const abs = path.join(root, 'assets', dir, fname);
   return `src="${toDataUri(abs, 'image/png')}"`;
 });
 html = inlineLogo(html);
@@ -38,11 +38,11 @@ const pageCount = pages.length;
 const frontCover = pages[0];
 
 // 본문을 두 페이지씩(spread) 짝지음 — PDF(render.js) 출력에는 영향 없음(book.html엔 .spread 래퍼가 없어 그대로 순차 낱장)
-// 표지(0)·목차(1)는 인쇄 관례상 오른쪽(recto) 단독 시작 — 왼쪽에 빈 면을 넣어 짝을 맞추고,
+// 표지(0)는 위 표지 임포지션 미리보기에서 이미 보여주므로 본문 덱에서는 제외(중복 표시 방지).
+// 목차(1)는 인쇄 관례상 오른쪽(recto) 단독 시작 — 왼쪽에 빈 면을 넣어 짝을 맞추고,
 // 그 이후(파트 간지부터)는 정상적으로 두 페이지씩 짝지음.
 const blank = '<section class="page nopad blank"></section>';
 let deckHtml = '';
-deckHtml += `<div class="spread">\n${blank}\n${pages[0]}\n</div>\n`;
 deckHtml += `<div class="spread">\n${blank}\n${pages[1]}\n</div>\n`;
 for (let i = 2; i < pages.length; i += 2) {
   deckHtml += `<div class="spread">\n${pages.slice(i, i + 2).join('\n')}\n</div>\n`;
