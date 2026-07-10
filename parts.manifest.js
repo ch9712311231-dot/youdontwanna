@@ -2,6 +2,7 @@
 // build_book.js(최종 병합)와 build_parts_preview.js(부분 미리보기)가 공통으로 참조하는 단일 목록.
 module.exports = [
   { file: '00_cover.html', label: '표지' },
+  { file: '00b_headline.html', label: '머리말' },
   { file: '01_toc.html', label: '목차' },
   { file: '02_part1_cover.html', label: 'PART 1 간지' },
   { file: '03_ch01_exam-intro.html', label: '① 임용 시험이란?' },

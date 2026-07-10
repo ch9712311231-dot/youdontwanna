@@ -39,12 +39,11 @@ const frontCover = pages[0];
 
 // 본문을 두 페이지씩(spread) 짝지음 — PDF(render.js) 출력에는 영향 없음(book.html엔 .spread 래퍼가 없어 그대로 순차 낱장)
 // 표지(0)는 위 표지 임포지션 미리보기에서 이미 보여주므로 본문 덱에서는 제외(중복 표시 방지).
-// 목차(1)는 인쇄 관례상 오른쪽(recto) 단독 시작 — 왼쪽에 빈 면을 넣어 짝을 맞추고,
+// 머리말(1)·목차(2)가 짝을 이루는 첫 스프레드(좌 머리말/우 목차)이고,
 // 그 이후(파트 간지부터)는 정상적으로 두 페이지씩 짝지음.
-const blank = '<section class="page nopad blank"></section>';
 let deckHtml = '';
-deckHtml += `<div class="spread">\n${blank}\n${pages[1]}\n</div>\n`;
-for (let i = 2; i < pages.length; i += 2) {
+deckHtml += `<div class="spread">\n${pages[1]}\n${pages[2]}\n</div>\n`;
+for (let i = 3; i < pages.length; i += 2) {
   deckHtml += `<div class="spread">\n${pages.slice(i, i + 2).join('\n')}\n</div>\n`;
 }
 
