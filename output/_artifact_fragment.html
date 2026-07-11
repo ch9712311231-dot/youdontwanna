@@ -66,7 +66,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:#3a4650;}
-body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;}
+body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;letter-spacing:0;}
 
 /* ── 페이지 ── */
 .page{
@@ -188,19 +188,19 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover.back-cover .bsite{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
-.part-cover{background:linear-gradient(155deg,#0E93A8 0%,#0A6E80 100%);
+.part-cover{background:linear-gradient(155deg, var(--brand) 0%, var(--brand-ink) 100%);
   justify-content:center; position:relative;}
 .part-cover .deco{position:absolute; border-radius:50%; background:rgba(255,255,255,.10);}
 .part-cover .deco.p1{width:65mm; height:65mm; top:-22mm; right:-18mm;}
 .part-cover .deco.p2{width:40mm; height:40mm; bottom:-14mm; left:-11mm;}
-.part-cover .eyebrow{color:#BFF1F7; font-size:8.5pt; font-weight:700; letter-spacing:.14em;}
-.part-cover .pn{color:var(--white); font-weight:900; font-size:30pt; margin-top:2.2mm; line-height:1;}
+.part-cover .eyebrow{color:var(--white); opacity:.85; font-size:8.5pt; font-weight:700; letter-spacing:.14em;}
+.part-cover .pn{color:var(--white); font-weight:900; font-size:44pt; margin-top:2.2mm; line-height:1;}
 .part-cover .flagline{display:flex; align-items:center; gap:2.2mm; margin-top:9mm;}
 .part-cover .flagline .bar{width:12mm; height:.9mm; background:var(--white); border-radius:var(--r-pill);}
 .part-cover .flag{width:3.6mm; height:2.9mm; background:var(--white); border-radius:0 1.2mm 1.2mm 1.2mm;}
 .part-cover h1{color:var(--white); font-weight:800; font-size:19pt; line-height:1.3; margin-top:4.3mm;}
 .part-cover .plist{margin-top:9mm; display:flex; flex-direction:column; gap:2.2mm;}
-.part-cover .plist .pi{display:flex; align-items:baseline; gap:3mm; color:#EAFBFD; font-size:9pt;}
+.part-cover .plist .pi{display:flex; align-items:baseline; gap:3mm; color:var(--white); opacity:.9; font-size:9pt;}
 .part-cover .plist .pi b{font-weight:800; color:var(--white); font-size:9.5pt; width:6mm;}
 
 /* ── 목차 ── */
@@ -232,6 +232,21 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .foreword .fw-lead{font-size:var(--fs-h2); font-weight:800; color:var(--brand); line-height:1.5; margin-bottom:4mm;}
 .foreword p:has(+ .fw-lead){margin-bottom:8mm;}
 
+/* ── 섹션 헤더(본문 챕터) — 신규 시안(챕터 표지판 스타일), 03_ch01 페이지에서만 사용 ── */
+.chx{position:relative; margin-bottom:4.6mm;}
+.chx-top{position:relative; display:flex; align-items:flex-end; margin-bottom:2.6mm;}
+.chx-sign{height:9.5mm; width:auto; flex-shrink:0; display:block;}
+.chx-dots{flex:1; height:0; border-bottom:.3mm dotted var(--muted); margin:0 2.2mm 1.4mm 2.6mm;}
+.chx-tag{font-size:var(--fs-xs); color:var(--muted); letter-spacing:.03em; flex-shrink:0;}
+.chx-title{display:flex; align-items:baseline; gap:3.2mm;}
+.chx-no{font-size:11pt; font-weight:800; color:var(--ink); letter-spacing:.01em;}
+.chx-no .chx-eyebrow{position:relative; top:-1.4mm;}
+.chx-no b{font-size:21pt; margin-left:1.6mm;}
+.chx-sep{width:.3mm; height:6.5mm; background:var(--ink); flex-shrink:0;}
+.chx-title h2{font-size:16.5pt; font-weight:800; color:var(--ink);}
+.chx .lead{color:var(--muted); font-size:var(--fs-xs); margin-top:1.6mm; text-align:right;}
+.chx-rule{height:.6mm; background:var(--brand); border-radius:var(--r-pill); margin-top:3.4mm;}
+
 /* ── 섹션 헤더(본문 챕터) ── */
 .ch{margin-bottom:4.3mm;}
 .ch .chno{display:inline-flex; align-items:center; gap:1.8mm; background:var(--sky-100);
@@ -243,7 +258,7 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 /* ── 본문 텍스트 ── */
 p{font-size:var(--fs-body); line-height:1.68; color:var(--ink-soft); margin-bottom:2.2mm;}
 p:last-child{margin-bottom:0;}
-strong{color:var(--ink); font-weight:700;}
+strong{color:var(--ink); font-weight:700; letter-spacing:.012em;}
 h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0 1.5mm;}
 
 /* ── 안내/포인트 박스 (둥근 카드) ── */
@@ -252,7 +267,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0
 .blk:first-of-type{margin-top:0;}
 .blk .mh{display:flex; align-items:center; gap:1.9mm; background:var(--sky-100);
   padding:2mm 3.2mm; border-bottom:.4mm solid var(--line);}
-.blk .mh .ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
+.blk .mh .ic{min-width:4.5mm;height:4.5mm;padding:0 1.3mm;border-radius:var(--r-pill);background:var(--brand);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.2pt;font-weight:800;}
 .blk .mh h3{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink);}
 .blk .bd{padding:3mm 3.2mm;}
@@ -411,7 +426,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 }
 
 </style>
-<div id="pv-bar"><span class="t">해커스임용 합격 로드맵 · 웹 미리보기</span><span class="m">총 17페이지 · 실물 판형 A5(148×210mm) 기준</span></div>
+<div id="pv-bar"><span class="t">해커스임용 합격 로드맵 · 웹 미리보기</span><span class="m">총 23페이지 · 실물 판형 A5(148×210mm) 기준</span></div>
 <div id="cover-proof">
   <span class="cp-label">표지 임포지션 미리보기 (뒤표지 · 앞표지 — 실제 출력물은 output/표지_스프레드.pdf 별도 파일)</span>
   <div class="spread">
@@ -521,9 +536,12 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
     <div class="toc-list">
       <div class="ti"><span class="tn">01</span><span class="tt">임용 시험이란?</span><span class="tp">008</span></div>
       <div class="ti"><span class="tn">02</span><span class="tt">중등 임용시험의 기본 조건</span><span class="tp">010</span></div>
-      <div class="ti"><span class="tn">03</span><span class="tt">한국사능력검정</span><span class="tp">007</span></div>
-      <div class="ti"><span class="tn">04</span><span class="tt">시험 과목 및 유형별 문항 수, 배점, 출제 범위</span><span class="tp">012</span></div>
-      <div class="ti"><span class="tn">05</span><span class="tt">모집인원 추이 (2024~2026학년도)</span><span class="tp">013</span></div>
+      <div class="ti"><span class="tn">03</span><span class="tt">시험 과목 및 유형별 문항 수, 배점, 출제 범위</span><span class="tp">012</span></div>
+      <div class="ti"><span class="tn">04</span><span class="tt">모집인원 추이 (2024~2026학년도)</span><span class="tp">013</span></div>
+      <div class="ti"><span class="tn">05</span><span class="tt">면접 준비방법</span><span class="tp">015</span></div>
+      <div class="ti"><span class="tn">06</span><span class="tt">합격자 선정 방법</span><span class="tp">016</span></div>
+      <div class="ti"><span class="tn">07</span><span class="tt">평가원에 자주 묻는 질문</span><span class="tp">018</span></div>
+      <div class="ti"><span class="tn">08</span><span class="tt">응시자 유의사항</span><span class="tp">019</span></div>
     </div>
   </div>
 
@@ -539,11 +557,29 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
       </div>
     </div>
     <div class="toc-list">
-      <div class="ti"><span class="tn">01</span><span class="tt">교육학 합격 전략</span><span class="tp">017</span></div>
+      <div class="ti"><span class="tn">01</span><span class="tt">교육학 합격 전략</span><span class="tp">023</span></div>
       <div class="ti"><span class="tn">02</span><span class="tt">국어 합격 전략</span><span class="tp">···</span></div>
       <div class="ti"><span class="tn">03</span><span class="tt">영어 합격 전략</span><span class="tp">···</span></div>
       <div class="ti"><span class="tn">04</span><span class="tt">수학 합격 전략</span><span class="tp">···</span></div>
       <div class="ti"><span class="tn">…</span><span class="tt">과목별 원고 순차 반영 예정</span><span class="tp">···</span></div>
+    </div>
+  </div>
+
+  <div class="toc-group">
+    <div class="gh">
+      <div class="gtag"><span class="gn">합격 로드맵 03</span></div>
+      <div class="gdesc">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path class="flag-pole" d="M5 3v18"/>
+          <path class="flag-flag" d="M5 4c3-1.6 5 1.6 8 0s5 1.6 5 1.6v7.6s-2-1.6-5 0-5-1.6-8 0z"/>
+        </svg>
+        <span>현직 교사가 전하는 합격 전략</span>
+      </div>
+    </div>
+    <div class="toc-list">
+      <div class="ti"><span class="tn">01</span><span class="tt">초수/수석 합격 전략</span><span class="tp">···</span></div>
+      <div class="ti"><span class="tn">02</span><span class="tt">N수/장수 탈출 비법</span><span class="tp">···</span></div>
+      <div class="ti"><span class="tn">03</span><span class="tt">일·육아 병행 합격 비법</span><span class="tp">···</span></div>
     </div>
   </div>
 
@@ -555,36 +591,47 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="deco p1"></div>
   <div class="deco p2"></div>
   <div style="position:relative;z-index:2;padding:0 16mm;">
-    <div class="eyebrow">HACKERS TEACHER · PART</div>
+    <div class="eyebrow">HACKERS TEACHER</div>
     <div class="pn">01</div>
     <div class="flagline"><div class="bar"></div><div class="flag"></div></div>
     <h1>중등 임용고시<br>이해하기</h1>
     <div class="plist">
       <div class="pi"><b>01</b>임용 시험이란?</div>
       <div class="pi"><b>02</b>중등 임용시험의 기본 조건</div>
-      <div class="pi"><b>03</b>한국사능력검정</div>
-      <div class="pi"><b>04</b>시험 과목 및 유형별 문항 수·배점·출제 범위</div>
-      <div class="pi"><b>05</b>모집인원 추이 (2024~2026학년도)</div>
+      <div class="pi"><b>03</b>시험 과목 및 유형별 문항 수·배점·출제 범위</div>
+      <div class="pi"><b>04</b>모집인원 추이 (2024~2026학년도)</div>
+      <div class="pi"><b>05</b>면접 준비방법</div>
+      <div class="pi"><b>06</b>합격자 선정 방법</div>
+      <div class="pi"><b>07</b>평가원에 자주 묻는 질문</div>
+      <div class="pi"><b>08</b>응시자 유의사항</div>
     </div>
   </div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">01 임용 시험이란?</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 01</span>
-    <h2>중등임용시험이란?</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>01</b></span>
+      <span class="chx-sep"></span>
+      <h2>중등임용시험이란?</h2>
+    </div>
     <div class="lead">출처 : 한국교육과정평가원</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q</div><h3>중등교사 임용시험은 어떤 시험인가?</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>중등교사 임용시험은 어떤 시험인가?</h3></div>
     <div class="bd">
       <p>정식 시험명은 <strong>'공립(국·사립) 중등학교교사 임용후보자 선정경쟁시험'</strong>으로, 합리적인 방법과 절차를 통하여 수준 높은 양질의 문항을 출제하여 교사로서의 전문적인 능력을 측정하는 평가입니다. 공정하고 객관적이며 신뢰성 있는 중등교사 임용 전형 자료를 제공합니다.</p>
     </div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">§</div><h3>근거 법령과 시험관리기관 소개</h3></div>
+    <div class="mh"><div class="ic">Q2</div><h3>근거 법령과 시험관리기관 소개</h3></div>
     <div class="bd">
       <p>「교육공무원법 및 교육공무원임용령」과 「교육공무원 임용후보자 선정경쟁시험규칙」을 근거로 시행됩니다.</p>
       <p>시험관리기관은 &lt;시·도교육청&gt;과 &lt;한국교육과정평가원&gt;으로 나뉩니다.</p>
@@ -682,9 +729,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 한국사능력검정</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 03</span>
+    <span class="chno">CHAPTER 02</span>
     <h2>한국사능력검정시험이란?</h2>
     <div class="credit">글 · 오태진 강사(전공역사)</div>
   </div>
@@ -712,9 +759,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>07</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 한국사능력검정</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 03</span>
+    <span class="chno">CHAPTER 02</span>
     <h2>한국사능력검정시험의 구분</h2>
     <div class="credit">글 · 오태진 강사(전공역사)</div>
   </div>
@@ -775,9 +822,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 한국사능력검정</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 03</span>
+    <span class="chno">CHAPTER 02</span>
     <h2>중요 출제 기준 — 시대별 비중</h2>
     <div class="credit">글 · 오태진 강사(전공역사)</div>
   </div>
@@ -810,9 +857,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>09</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 한국사능력검정</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 03</span>
+    <span class="chno">CHAPTER 02</span>
     <h2>문제로 보는 심화·기본의 차이</h2>
     <div class="credit">글 · 오태진 강사(전공역사)</div>
   </div>
@@ -855,9 +902,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 한국사능력검정</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 03</span>
+    <span class="chno">CHAPTER 02</span>
     <h2>한국사능력검정시험 공부 비법</h2>
     <div class="credit">글 · 오태진 강사(전공역사)</div>
   </div>
@@ -901,9 +948,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>11</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 시험 과목 및 유형별 문항 수·배점·출제 범위</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 시험 과목 및 유형별 문항 수·배점·출제 범위</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 04</span>
+    <span class="chno">CHAPTER 03</span>
     <h2>시험 과목 및 유형별 문항 수, 배점, 출제 범위</h2>
   </div>
 
@@ -950,7 +997,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="notice">
-    제1차 시험의 <b>한국사 과목은 한국사능력검정시험으로 대체</b>됩니다. 응시원서 접수 시 한국사능력검정시험 인증서(또는 응시 정보) 제출이 필요하니 <b>PART 01-03 한국사능력검정</b>을 함께 확인하세요.
+    제1차 시험의 <b>한국사 과목은 한국사능력검정시험으로 대체</b>됩니다. 응시원서 접수 시 한국사능력검정시험 인증서(또는 응시 정보) 제출이 필요하니 <b>PART 01-02 중등 임용시험의 기본 조건</b>을 함께 확인하세요.
   </div>
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>12</b></div>
@@ -958,9 +1005,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">05 모집인원 추이</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 모집인원 추이</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 05</span>
+    <span class="chno">CHAPTER 04</span>
     <h2>모집인원 추이 (2024 · 2025 · 2026학년도)</h2>
     <div class="lead">전체 41개 과목 기준, TO(모집인원) 3개년 비교</div>
   </div>
@@ -1004,9 +1051,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>13</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">05 모집인원 추이</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 모집인원 추이</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 05</span>
+    <span class="chno">CHAPTER 04</span>
     <h2>과목별 모집인원(TO) 3개년 추이</h2>
     <div class="lead">단위: 명 · 증감은 2025학년도 대비 2026학년도</div>
   </div>
@@ -1082,6 +1129,221 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </section>
 </div>
 <div class="spread">
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">05 면접 준비방법</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 05</span>
+    <h2>면접 준비방법</h2>
+    <div class="lead">출처 : 해커스임용 합격로드맵 종합편</div>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">1</div><h3>2차 면접의 의미와 평가 요소</h3></div>
+    <div class="bd">
+      <p>면접(interview)은 지필검사로 측정할 수 없는 신체적·정의적 특성을 평가하는 방법으로, 국가관·교직관·수업관·사회 현안에 대한 견해·논리성·용모예의 등을 살펴봅니다.</p>
+      <div class="stats">
+        <div class="stat"><div class="k">표현영역</div><div class="v">50<small>%</small></div></div>
+        <div class="stat"><div class="k">인지영역</div><div class="v">50<small>%</small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">2</div><h3>개별면접 진행 절차</h3></div>
+    <div class="bd">
+      <ul class="plist2">
+        <li><span class="pn">1</span><div><strong>대기실</strong> — 안내 방송·감독관 안내에 따라 대기, 관리번호 추첨으로 순서·좌석 결정</div></li>
+        <li><span class="pn">2</span><div><strong>구상실(10분 내외)</strong> — 구상형 문제지 수령 → 관리번호만 기입(수험번호·성명 기재 금지) → 여백에 메모 가능</div></li>
+        <li><span class="pn">3</span><div><strong>면접실(10분 내외)</strong> — "관리번호 ○번입니다" 소개 후 착석 → 구상형·즉답형 문항 답변 → 추가 질의 응답 → "이상입니다"로 마무리</div></li>
+      </ul>
+      <p style="font-size:var(--fs-xs);color:var(--muted);margin-top:1.6mm;">※ 지역·시행 방식에 따라 구상·면접 시간, 문항 수는 달라질 수 있으니 반드시 해당 연도 시행계획을 확인하세요.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="t">TIP · 2차 면접, 지식은 20%일 뿐입니다</div>
+    <p>면접 평가 항목 중 지식·이해에 대한 배점은 약 20%에 불과합니다. 나머지는 자신감·표현력·태도·의사소통 능력입니다. 무엇을 아는지보다 <strong>1~2개의 논거를 설득력 있게 전달하는 연습</strong>("1분 안에 말하기")과 <strong>아이컨택(eye contact)</strong>이 실제 점수를 가릅니다.</p>
+  </div>
+
+  <div class="notice">
+    <b>자기소개서·자기성장소개서 작성 시 공통 유의사항</b><br>
+    ① 본인이 직접, 사실에 입각해 작성 — 표절·대리작성·허위 기재 적발 시 불이익&nbsp;&nbsp; ② 성명·출신학교·지역명 등 신원을 유추할 수 있는 표현 금지&nbsp;&nbsp; ③ 시·도별 지정 양식·분량·서체를 반드시 확인
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>15</b></div>
+</section>
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">06 합격자 선정 방법</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 06</span>
+    <h2>합격자 선정 방법</h2>
+    <div class="lead">출처 : 교육공무원 임용후보자 선정경쟁시험규칙</div>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">1</div><h3>제1차 시험 합격자 결정</h3></div>
+    <div class="bd">
+      <p>각 과목 만점의 <strong>40% 이상</strong>을 득점한 사람 중, 아래 점수가 높은 사람부터 차례로 결정합니다.</p>
+      <div class="notice" style="margin-top:2mm;">
+        <b>1차 시험 점수 = 1차 시험 성적 + 가산점 + 가점</b>
+      </div>
+      <ul class="plist2" style="margin-top:2.5mm;">
+        <li><span class="pn">·</span><div>합격자 수 = 과목별 선발예정인원의 <strong>1.5배수</strong> (소수점 이하 절상)</div></li>
+        <li><span class="pn">·</span><div>합격선에 동점자가 있으면 동점자 <strong>전원 합격</strong> 처리</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="t">TIP · 과락은 이렇게 처리됩니다</div>
+    <p>1차 시험 과목별 배점의 <strong>40% 미만(과락)</strong>이거나 전형별로 미응시(결시)한 경우 합격자 사정에서 제외됩니다.</p>
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>16</b></div>
+</section>
+</div>
+<div class="spread">
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">06 합격자 선정 방법</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 06</span>
+    <h2>합격자 선정 방법</h2>
+    <div class="lead">출처 : 교육공무원 임용후보자 선정경쟁시험규칙</div>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">2</div><h3>최종 합격자 결정</h3></div>
+    <div class="bd">
+      <p>1차 시험 성적과 2차 시험 성적에 각각 가점을 더한 최종 점수가 높은 사람부터 차례로 결정합니다.</p>
+      <div class="notice" style="margin-top:2mm;">
+        <b>최종 점수 = [1차 성적+가점] + [2차 성적+가점]</b>&nbsp;&nbsp;※ 가산점은 미반영
+      </div>
+      <p style="margin-top:2.5mm;"><strong>동점자 처리 순위</strong></p>
+      <ul class="plist2">
+        <li><span class="pn">1</span><div>취업지원 대상자</div></li>
+        <li><span class="pn">2</span><div>2차 시험 성적(가점 제외)이 높은 사람</div></li>
+        <li><span class="pn">3</span><div>병역의무를 마친 사람(원서 접수 마감일 기준 6개월 이내 전역 예정자 포함)</div></li>
+        <li><span class="pn">4</span><div>수업실연(2차) 성적이 높은 사람</div></li>
+        <li><span class="pn">5</span><div>교직적성 심층면접(2차) 성적이 높은 사람</div></li>
+        <li><span class="pn">6</span><div>전공(1차) 성적이 높은 사람</div></li>
+        <li><span class="pn">7</span><div>교육학(1차) 성적이 높은 사람</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="t">TIP · 사립학교는 다릅니다</div>
+    <p>사립학교는 1차 합격자 수를 선발예정인원의 <strong>5배수</strong>로 하며, 2차 시험은 해당 법인의 자체 전형계획을 따릅니다.</p>
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>17</b></div>
+</section>
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">07 평가원에 자주 묻는 질문</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 07</span>
+    <h2>평가원에 자주 묻는 질문</h2>
+    <div class="lead">출처 : 한국교육과정평가원</div>
+  </div>
+
+  <div class="blk">
+    <div class="bd">
+      <div class="qa-blk">
+        <div class="q"><span class="qtag">Q1</span><span>분량이 제한된 문항은 어떻게 채점하나요?</span></div>
+        <div class="a"><span class="atag">A</span><p>제한된 분량(예: 3줄 이내, 3가지만) 범위 안의 답안만 채점합니다. 범위를 벗어난 내용은 채점에서 제외됩니다.</p></div>
+      </div>
+      <div class="qa-blk">
+        <div class="q"><span class="qtag">Q2</span><span>연필이나 수정액(테이프)을 사용해도 되나요?</span></div>
+        <div class="a"><span class="atag">A</span><p>연필로 작성하거나 수정액·수정테이프로 수정한 부분은 채점하지 않습니다. 수정할 때는 <strong>두 줄을 긋고</strong> 새로 씁니다.</p></div>
+      </div>
+      <div class="qa-blk">
+        <div class="q"><span class="qtag">Q3</span><span>답안란이 아닌 곳(옆면·뒷면 등)에 썼다면?</span></div>
+        <div class="a"><span class="atag">A</span><p>답안지 옆면·뒷면·다른 문항란에 작성한 내용은 채점하지 않습니다. 다른 문항란까지 침범해 작성한 경우 그 부분도 제외됩니다.</p></div>
+      </div>
+      <div class="qa-blk">
+        <div class="q"><span class="qtag">Q4</span><span>답안 내용 이외의 표시가 있으면 어떻게 되나요?</span></div>
+        <div class="a"><span class="atag">A</span><p>수험생 신분을 노출·암시하는 특정 표시가 있는 답안지는 <strong>'0점' 처리</strong>될 수 있습니다. 일반적인 글쓰기 교정 부호만 사용 가능합니다.</p></div>
+      </div>
+      <div class="qa-blk">
+        <div class="q"><span class="qtag">Q5</span><span>교육과정 출제 범위는 어떻게 확인하나요?</span></div>
+        <div class="a"><span class="atag">A</span><p>각 시·도 임용시험 <strong>모집 공고일 현재</strong> 고시되어 있는 교육과정까지가 범위입니다. 전공별 고시일이 다르므로 국가교육과정정보센터(ncic.re.kr)에서 확인하세요.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>18</b></div>
+</section>
+</div>
+<div class="spread">
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">08 응시자 유의사항</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 08</span>
+    <h2>응시자 유의사항 — 1차 시험</h2>
+    <div class="lead">출처 : 교육공무원 임용후보자 선정경쟁시험 문제지 유의사항</div>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">1</div><h3>답안지 작성 공통 유의사항 (교육학·전공 공통)</h3></div>
+    <div class="bd">
+      <ul class="plist2">
+        <li><span class="pn">1</span><div>문제지(초안 작성 용지 포함)와 답안지의 전체 면수·인쇄 상태를 먼저 확인</div></li>
+        <li><span class="pn">2</span><div>답안지 모든 면 상단에 성명·수험번호 기재, 검은색 펜으로 표기란을 '●'로 표기</div></li>
+        <li><span class="pn">3</span><div>초안은 초안 작성 용지에만 — 초안 용지에 쓴 내용은 인정하지 않음</div></li>
+        <li><span class="pn">4</span><div>지워지거나 번지지 않는 <strong>검은색 펜</strong>만 사용(연필·사인펜 불가)</div></li>
+        <li><span class="pn">5</span><div>답안 수정 시 반드시 <strong>두 줄(=)을 긋고</strong> 새로 작성 — 수정액·수정테이프 사용 불가</div></li>
+        <li><span class="pn">6</span><div>요구한 가짓수까지만 순서대로 채점 (초과분은 채점 제외)</div></li>
+        <li><span class="pn">7</span><div>시험 종료 후 작성은 부정행위로 간주, 답안지는 백지라도 전량 제출</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice">
+    <b>다음은 채점하지 않습니다</b><br>
+    ① 답안란 이외 공간(옆면·뒷면 등)에 작성한 부분&nbsp;&nbsp; ② 식별 불가능하게 지워지거나 번진 부분&nbsp;&nbsp; ③ 연필·수정액(테이프)을 사용한 부분&nbsp;&nbsp; ④ 개인정보를 노출·암시하는 표시가 있는 답안지 전체
+  </div>
+
+  <div class="tip">
+    <div class="t">TIP · 전공과목 답안란의 추가 규칙</div>
+    <p>전공과목은 가로 선으로 답안란의 줄을 추가하거나, <strong>세로 선으로 답안란을 다단 구분</strong>할 수 있습니다(해당 답안란 내에서만 유효).</p>
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>19</b></div>
+</section>
+<section class="page">
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">08 응시자 유의사항</span></div>
+  <div class="ch">
+    <span class="chno">CHAPTER 08</span>
+    <h2>응시자 유의사항 — 2차 시험</h2>
+  </div>
+
+  <div class="blk">
+    <div class="mh"><div class="ic">1</div><h3>수업실연 · 심층면접 공통 절차</h3></div>
+    <div class="bd">
+      <ul class="plist2">
+        <li><span class="pn">·</span><div>구상실 입실 시 <strong>관리번호만 기재</strong>(수험번호·성명 기재 금지), 개인 소지품은 복도 지정 장소에 보관</div></li>
+        <li><span class="pn">·</span><div>평가실 입실 후 "관리번호 ○번입니다"로 소개, 답변은 "이상입니다"로 마무리</div></li>
+        <li><span class="pn">·</span><div>아날로그 손목시계 외 탁상시계·전자기기 반입 불가, 평가실 참고용 시계로 시간 확인</div></li>
+        <li><span class="pn">·</span><div>구상실 입실 이후 평가 종료까지 화장실 이용 불가 (사전에 미리 다녀올 것)</div></li>
+        <li><span class="pn">·</span><div>퇴실 후 대기 중인 다른 응시자와 대화 금지, 즉시 시험장 밖으로 이동</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice">
+    <b>시험장 반입 금지 물품</b><br>
+    휴대폰 등 통신기기, 태블릿PC·노트북, 디지털카메라, 전자사전, 스마트워치 등 웨어러블 기기, 전자계산기 등 모든 통신·전자기기 — 휴식시간 포함 전 시간 소지 자체가 금지되며 적발 시 부정행위로 간주됩니다.
+  </div>
+
+  <div class="tip">
+    <div class="t">TIP · 지역별로 세부 규정이 다릅니다</div>
+    <p>수업실연·심층면접 진행 순서, 구상·답변 시간, 집단토의·자기성장소개서 등 <strong>2차 시험 방식은 시·도교육청마다 다릅니다.</strong> 1차 합격자 발표와 함께 공개되는 해당 연도·지역 2차 시험 시행계획을 반드시 확인하세요.</p>
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>20</b></div>
+</section>
+</div>
+<div class="spread">
 <section class="page nopad part-cover">
   <div class="deco p1"></div>
   <div class="deco p2"></div>
@@ -1123,7 +1385,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
     <p>기본이론(3~6월) → 기출분석 및 키워드 정리(7~9월) → 논술 답안 작성 훈련(10~11월) 순으로 학습을 배치하면 효율적입니다.</p>
   </div>
 
-  <div class="folio"><span>PART 02 — 과목별 선생님이 전하는 합격 전략</span><b>17</b></div>
+  <div class="folio"><span>PART 02 — 과목별 선생님이 전하는 합격 전략</span><b>23</b></div>
 </section>
 </div>
 

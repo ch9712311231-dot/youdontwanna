@@ -72,7 +72,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:#3a4650;}
-body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;}
+body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;letter-spacing:0;}
 
 /* ── 페이지 ── */
 .page{
@@ -194,19 +194,19 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover.back-cover .bsite{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
-.part-cover{background:linear-gradient(155deg,#0E93A8 0%,#0A6E80 100%);
+.part-cover{background:linear-gradient(155deg, var(--brand) 0%, var(--brand-ink) 100%);
   justify-content:center; position:relative;}
 .part-cover .deco{position:absolute; border-radius:50%; background:rgba(255,255,255,.10);}
 .part-cover .deco.p1{width:65mm; height:65mm; top:-22mm; right:-18mm;}
 .part-cover .deco.p2{width:40mm; height:40mm; bottom:-14mm; left:-11mm;}
-.part-cover .eyebrow{color:#BFF1F7; font-size:8.5pt; font-weight:700; letter-spacing:.14em;}
-.part-cover .pn{color:var(--white); font-weight:900; font-size:30pt; margin-top:2.2mm; line-height:1;}
+.part-cover .eyebrow{color:var(--white); opacity:.85; font-size:8.5pt; font-weight:700; letter-spacing:.14em;}
+.part-cover .pn{color:var(--white); font-weight:900; font-size:44pt; margin-top:2.2mm; line-height:1;}
 .part-cover .flagline{display:flex; align-items:center; gap:2.2mm; margin-top:9mm;}
 .part-cover .flagline .bar{width:12mm; height:.9mm; background:var(--white); border-radius:var(--r-pill);}
 .part-cover .flag{width:3.6mm; height:2.9mm; background:var(--white); border-radius:0 1.2mm 1.2mm 1.2mm;}
 .part-cover h1{color:var(--white); font-weight:800; font-size:19pt; line-height:1.3; margin-top:4.3mm;}
 .part-cover .plist{margin-top:9mm; display:flex; flex-direction:column; gap:2.2mm;}
-.part-cover .plist .pi{display:flex; align-items:baseline; gap:3mm; color:#EAFBFD; font-size:9pt;}
+.part-cover .plist .pi{display:flex; align-items:baseline; gap:3mm; color:var(--white); opacity:.9; font-size:9pt;}
 .part-cover .plist .pi b{font-weight:800; color:var(--white); font-size:9.5pt; width:6mm;}
 
 /* ── 목차 ── */
@@ -238,6 +238,21 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .foreword .fw-lead{font-size:var(--fs-h2); font-weight:800; color:var(--brand); line-height:1.5; margin-bottom:4mm;}
 .foreword p:has(+ .fw-lead){margin-bottom:8mm;}
 
+/* ── 섹션 헤더(본문 챕터) — 신규 시안(챕터 표지판 스타일), 03_ch01 페이지에서만 사용 ── */
+.chx{position:relative; margin-bottom:4.6mm;}
+.chx-top{position:relative; display:flex; align-items:flex-end; margin-bottom:2.6mm;}
+.chx-sign{height:9.5mm; width:auto; flex-shrink:0; display:block;}
+.chx-dots{flex:1; height:0; border-bottom:.3mm dotted var(--muted); margin:0 2.2mm 1.4mm 2.6mm;}
+.chx-tag{font-size:var(--fs-xs); color:var(--muted); letter-spacing:.03em; flex-shrink:0;}
+.chx-title{display:flex; align-items:baseline; gap:3.2mm;}
+.chx-no{font-size:11pt; font-weight:800; color:var(--ink); letter-spacing:.01em;}
+.chx-no .chx-eyebrow{position:relative; top:-1.4mm;}
+.chx-no b{font-size:21pt; margin-left:1.6mm;}
+.chx-sep{width:.3mm; height:6.5mm; background:var(--ink); flex-shrink:0;}
+.chx-title h2{font-size:16.5pt; font-weight:800; color:var(--ink);}
+.chx .lead{color:var(--muted); font-size:var(--fs-xs); margin-top:1.6mm; text-align:right;}
+.chx-rule{height:.6mm; background:var(--brand); border-radius:var(--r-pill); margin-top:3.4mm;}
+
 /* ── 섹션 헤더(본문 챕터) ── */
 .ch{margin-bottom:4.3mm;}
 .ch .chno{display:inline-flex; align-items:center; gap:1.8mm; background:var(--sky-100);
@@ -249,7 +264,7 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 /* ── 본문 텍스트 ── */
 p{font-size:var(--fs-body); line-height:1.68; color:var(--ink-soft); margin-bottom:2.2mm;}
 p:last-child{margin-bottom:0;}
-strong{color:var(--ink); font-weight:700;}
+strong{color:var(--ink); font-weight:700; letter-spacing:.012em;}
 h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0 1.5mm;}
 
 /* ── 안내/포인트 박스 (둥근 카드) ── */
@@ -258,7 +273,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0
 .blk:first-of-type{margin-top:0;}
 .blk .mh{display:flex; align-items:center; gap:1.9mm; background:var(--sky-100);
   padding:2mm 3.2mm; border-bottom:.4mm solid var(--line);}
-.blk .mh .ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
+.blk .mh .ic{min-width:4.5mm;height:4.5mm;padding:0 1.3mm;border-radius:var(--r-pill);background:var(--brand);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.2pt;font-weight:800;}
 .blk .mh h3{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink);}
 .blk .bd{padding:3mm 3.2mm;}
@@ -422,16 +437,19 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="deco p1"></div>
   <div class="deco p2"></div>
   <div style="position:relative;z-index:2;padding:0 16mm;">
-    <div class="eyebrow">HACKERS TEACHER · PART</div>
+    <div class="eyebrow">HACKERS TEACHER</div>
     <div class="pn">01</div>
     <div class="flagline"><div class="bar"></div><div class="flag"></div></div>
     <h1>중등 임용고시<br>이해하기</h1>
     <div class="plist">
       <div class="pi"><b>01</b>임용 시험이란?</div>
       <div class="pi"><b>02</b>중등 임용시험의 기본 조건</div>
-      <div class="pi"><b>03</b>한국사능력검정</div>
-      <div class="pi"><b>04</b>시험 과목 및 유형별 문항 수·배점·출제 범위</div>
-      <div class="pi"><b>05</b>모집인원 추이 (2024~2026학년도)</div>
+      <div class="pi"><b>03</b>시험 과목 및 유형별 문항 수·배점·출제 범위</div>
+      <div class="pi"><b>04</b>모집인원 추이 (2024~2026학년도)</div>
+      <div class="pi"><b>05</b>면접 준비방법</div>
+      <div class="pi"><b>06</b>합격자 선정 방법</div>
+      <div class="pi"><b>07</b>평가원에 자주 묻는 질문</div>
+      <div class="pi"><b>08</b>응시자 유의사항</div>
     </div>
   </div>
 </section>
