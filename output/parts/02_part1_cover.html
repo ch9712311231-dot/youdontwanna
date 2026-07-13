@@ -283,11 +283,9 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .plist2 li{list-style:none; display:flex; gap:1.2mm; align-items:flex-start; font-size:var(--fs-body); color:var(--ink-soft); line-height:1.55;}
 .plist2 li .pn{flex-shrink:0; width:1.8mm; height:1.8mm; border-radius:50%; background:var(--brand); font-size:0; margin-top:1.5mm;}
 
-/* 알림/주의 박스 (검정 tint, 둥근형 — "!" 배지로 강조 구분) */
-.notice{position:relative; border:.5mm dashed var(--gray-200); background:var(--gray-50); border-radius:var(--r-md);
-  padding:3mm 3.6mm 3mm 8mm; margin-top:3mm; font-size:var(--fs-sm); color:var(--ink-soft); line-height:1.6;}
-.notice::before{content:'!'; position:absolute; left:2.6mm; top:3mm; width:4mm; height:4mm; border-radius:50%;
-  background:var(--ink); color:#fff; font-weight:900; font-size:6.5pt; line-height:4mm; text-align:center;}
+/* 알림/주의 박스 (검정 tint, 둥근형) */
+.notice{border:.5mm dashed var(--gray-200); background:var(--gray-50); border-radius:var(--r-md);
+  padding:3mm 3.6mm; margin-top:3mm; font-size:var(--fs-sm); color:var(--ink-soft); line-height:1.6;}
 .notice b{color:var(--ink); font-weight:800;}
 
 /* 팁 카드 */
