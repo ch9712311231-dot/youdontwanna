@@ -72,7 +72,7 @@
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{background:#3a4650;}
-body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;letter-spacing:0;}
+body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all;letter-spacing:0;line-height:1.68;}
 
 /* ── 페이지 ── */
 .page{
@@ -265,7 +265,7 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 p{font-size:var(--fs-body); line-height:1.68; color:var(--ink-soft); margin-bottom:2.2mm;}
 p:last-child{margin-bottom:0;}
 strong{color:var(--ink); font-weight:700; letter-spacing:.012em;}
-h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0 1.5mm;}
+h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm 0 1.5mm;}
 
 /* ── 안내/포인트 박스 (둥근 카드) ── */
 .blk{background:var(--white); border:.4mm solid var(--line); border-radius:var(--r-md);
@@ -279,10 +279,9 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:3mm 0
 .blk .bd{padding:3mm 3.2mm;}
 
 /* 강조 리스트(번호 pill) */
-.plist2{display:flex; flex-direction:column; gap:1.8mm; margin-top:.8mm;}
-.plist2 li{list-style:none; display:flex; gap:2.2mm; align-items:flex-start; font-size:var(--fs-body); color:var(--ink-soft); line-height:1.55;}
-.plist2 li .pn{flex-shrink:0; width:4.8mm; height:4.8mm; border-radius:50%; background:var(--brand);
-  color:#fff; font-weight:800; font-size:7.2pt; display:flex; align-items:center; justify-content:center;}
+.plist2{display:flex; flex-direction:column; gap:1.8mm; margin-top:.8mm; padding-left:2.5mm;}
+.plist2 li{list-style:none; display:flex; gap:1.2mm; align-items:flex-start; font-size:var(--fs-body); color:var(--ink-soft); line-height:1.55;}
+.plist2 li .pn{flex-shrink:0; width:1.8mm; height:1.8mm; border-radius:50%; background:var(--brand); font-size:0; margin-top:1.5mm;}
 
 /* 알림/주의 박스 (검정 tint, 둥근형 — "!" 배지로 강조 구분) */
 .notice{position:relative; border:.5mm dashed var(--gray-200); background:var(--gray-50); border-radius:var(--r-md);
@@ -434,7 +433,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </style>
 </head>
 <body>
-<div id="pv-bar"><span class="t">해커스임용 합격 로드맵 · 웹 미리보기</span><span class="m">총 25페이지 · 실물 판형 A5(148×210mm) 기준</span></div>
+<div id="pv-bar"><span class="t">해커스임용 합격 로드맵 · 웹 미리보기</span><span class="m">총 26페이지 · 실물 판형 A5(148×210mm) 기준</span></div>
 <div id="cover-proof">
   <span class="cp-label">표지 임포지션 미리보기 (뒤표지 · 앞표지 — 실제 출력물은 output/표지_스프레드.pdf 별도 파일)</span>
   <div class="spread">
@@ -657,15 +656,17 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
     <div class="bd">
       <p>「교육공무원법 및 교육공무원임용령」과 「교육공무원 임용후보자 선정경쟁시험규칙」을 근거로 시행됩니다. 시험관리기관은 &lt;시·도교육청&gt;과 &lt;한국교육과정평가원&gt;으로 나뉩니다.</p>
       <ul class="plist2">
-        <li><span class="pn">1</span><div><strong>시·도교육청</strong> — 시행공고, 원서 교부·접수, 문답지 운송, 시험 실시, 합격자 발표</div></li>
-        <li><span class="pn">2</span><div><strong>한국교육과정평가원</strong> — 1·2차 시험 출제 및 1차 시험 채점</div></li>
+        <li><span class="pn">1</span><div><strong>시·도교육청</strong><br>시행공고, 원서 교부·접수, 문답지 운송, 시험 실시, 합격자 발표</div></li>
+        <li><span class="pn">2</span><div><strong>한국교육과정평가원</strong><br>1·2차 시험 출제 및 1차 시험 채점</div></li>
       </ul>
     </div>
   </div>
 
-  <div class="tip">
-    <div class="t">TIP · 한눈에 보는 시험 구조</div>
-    <p>시험은 <strong>1차(필기)</strong>와 <strong>2차(교직적성 심층면접·교수·학습 지도안 작성·수업능력 평가 등)</strong>로 진행되며, 1차 합격자에 한해 2차 응시 자격이 주어집니다.</p>
+  <div class="blk">
+    <div class="mh"><div class="ic">Q3</div><h3>시험 일정</h3></div>
+    <div class="bd">
+      <p>시험 일정은 각 시·도 교육청 홈페이지의 공고문을 참고하시기 바랍니다.</p>
+    </div>
   </div>
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>04</b></div>
@@ -673,47 +674,80 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>중등임용시험의 기본조건</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>02</b></span>
+      <span class="chx-sep"></span>
+      <h2>중등임용시험의 기본조건</h2>
+    </div>
     <div class="lead">출처 : 국가법령정보센터</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>시험 응시를 위한 제출서류</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>시험 응시를 위한 제출 서류</h3></div>
     <div class="bd">
       <p>「교육공무원 임용후보자 선정경쟁시험규칙」 제10조(제출서류)에서는 중등임용시험 응시를 위한 기본 제출 서류를 명시하고 있습니다.</p>
-      <h4>1) 한국사 검정능력 3급 이상 자격증 보유</h4>
+      <h4>1) 한국사능력검정시험 3급 이상 자격증 보유</h4>
       <ul class="plist2">
-        <li><span class="pn">A</span><div>응시원서 제출 당시 결과 보유 시 — 응시일자, 수험번호(또는 인증번호), 합격등급 기재</div></li>
-        <li><span class="pn">B</span><div>결과 미보유 시 — 응시일자, 접수번호(또는 수험번호), 응시등급 기재</div></li>
+        <li><span class="pn">①</span><div>응시 원서 제출 당시 자격증 결과 보유 시 : 응시일자, 수험번호(또는 인증번호), 합격등급 기재</div></li>
+        <li><span class="pn">②</span><div>응시 원서 제출 당시 자격증 결과 미보유 시 : 응시일자, 접수번호(또는 수험번호), 응시등급 기재</div></li>
       </ul>
-      <h4>2) 응시원서 외 추가 제출서류</h4>
-      <p>교원자격증 사본(졸업예정자·수료예정자는 증명서 제출), 출신학교(교육대학 등만 해당)의 모든 학년 성적증명서</p>
-    </div>
-  </div>
-
-  <div class="blk">
-    <div class="mh"><div class="ic">2</div><h3>가산점 서류 &amp; 기타 확인서류</h3></div>
-    <div class="bd">
-      <p><strong>가산점(제8조 4항)</strong> — 아래 해당자는 1차시험 성적 만점의 10% 범위에서 가산점이 부여될 수 있습니다.</p>
+      <h4>2) 응시 원서 외에 시험실시기관이 정하는 시기와 방법에 따라 제출 서류</h4>
       <ul class="plist2">
-        <li><span class="pn">·</span><div>교육대학 등 졸업자(교원경력자 제외)로서 교육감이 정하는 지역에서 응시하는 사람</div></li>
-        <li><span class="pn">·</span><div>시·도 교육감이 정하는 도서·벽지에서 근무를 조건으로 응시하는 사람</div></li>
+        <li><span class="pn">·</span><div>교원자격증 사본(졸업예정자 또는 수료예정자는 증명서 제출)</div></li>
+        <li><span class="pn">·</span><div>출신학교(교육 대학 등만 해당)의 모든 학년 성적 증명서</div></li>
+      </ul>
+      <h4>3) 가산점 서류</h4>
+      <p>제8조2항에 근거하여 시험실시기관은 아래 항목에 해당하는 사람에게 제 1차 시험 성적 만점의<br>10%의 범위에서 가산점을 줄 수 있습니다.</p>
+      <ul class="plist2">
+        <li><span class="pn">·</span><div>교육 대학 등의 졸업자(교원경력자 제외)로서 교육감이 정하는 지역에서 응시하는 사람</div></li>
+        <li><span class="pn">·</span><div>특별시·광역시·특별자치시도 및 특별자치도 교육감이 정하는 도서·벽지에서 근무할 것을 조건으로 응시하는 사람</div></li>
         <li><span class="pn">·</span><div>그 밖에 시험실시기관이 인정하는 기준에 해당하는 사람</div></li>
       </ul>
-      <p style="margin-top:3mm;"><strong>기타 확인서류</strong> — 국민기초생활수급자증명서 · 장애인증명서 · 취업지원대상자증명서 · 한부모가족증명서</p>
     </div>
-  </div>
-
-  <div class="notice">
-    <b>제출서류로 보는 응시 기본 조건</b><br>
-    ① 한국사능력검정시험 3급 이상&nbsp;&nbsp; ② 교원자격증 소유 또는 소유예정(졸업·수료예정자)&nbsp;&nbsp; ③ 각 전공에서 인정하는 학점 및 학위 취득(전공별 상이)
   </div>
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>05</b></div>
 </section>
+<section class="page">
+  <div class="blk" style="margin-top:8mm;">
+    <div class="bd">
+      <h4 style="margin-top:0;">4) 기타 확인 서류</h4>
+      <p>시험실시기관은 행정 정보의 공동 이용을 통하여 아래 서류에 대한 정보를 확인해야 한다.<br>다만, 시험에 응시한 사람이 확인에 동의하지 않는 경우에는 해당 서류를 제출하게 해야 한다.</p>
+      <ul class="plist2">
+        <li><span class="pn">·</span><div>국민 기초 생활 수급자 증명서</div></li>
+        <li><span class="pn">·</span><div>장애인 증명서</div></li>
+        <li><span class="pn">·</span><div>취업 지원 대상자 증명서</div></li>
+        <li><span class="pn">·</span><div>한부모 가족 증명서</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="notice" style="margin-top:5mm;">
+    <b style="display:flex;align-items:center;gap:1.8mm;margin-bottom:2mm;">
+      <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;color:var(--brand-deep);">
+        <rect x=".6" y=".6" width="8.8" height="10.8" rx="1.2" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="2.5" y1="4" x2="7.5" y2="4" stroke="currentColor" stroke-width=".9"/>
+        <line x1="2.5" y1="6.2" x2="7.5" y2="6.2" stroke="currentColor" stroke-width=".9"/>
+        <line x1="2.5" y1="8.4" x2="5.8" y2="8.4" stroke="currentColor" stroke-width=".9"/>
+      </svg>
+      제출서류로 보는 응시 기본 조건
+    </b>
+    ① 한국사능력검정시험 3급 이상<br>
+    ② 교원자격증 소유 또는 소유예정(졸업·수료예정자)<br>
+    ③ 각 전공에서 인정하는 학점 및 학위 취득(전공별 상이)
+  </div>
+
+  <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>06</b></div>
+</section>
+</div>
+<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -722,14 +756,14 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">i</div><h3>초·중등교육법 제21조(교원의 자격)</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>초·중등교육법 제21조(교원의 자격)</h3></div>
     <div class="bd">
       <p>교사는 정교사(1급·2급), 준교사, 전문상담교사(1급·2급), 사서교사(1급·2급), 실기교사, 보건교사(1급·2급) 및 영양교사(1급·2급)로 나뉘되, 별표2의 자격 기준에 해당하는 사람으로서 대통령령으로 정하는 바에 따라 교육부장관이 검정·수여하는 자격증을 받은 사람이어야 합니다.</p>
     </div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">2</div><h3>정교사 2급 관련 별표 2 (중등학교)</h3></div>
+    <div class="mh"><div class="ic">Q2</div><h3>정교사 2급 관련 별표 2 (중등학교)</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div>사범대학을 졸업한 사람</div></li>
@@ -747,8 +781,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>06</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -758,7 +790,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>한국사능력검정시험의 출제유형</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>한국사능력검정시험의 출제유형</h3></div>
     <div class="bd">
       <p>한국사능력검정시험의 문항은 역사교육의 목표 준거에 따라 다음의 여섯 가지 유형으로 구분됩니다.</p>
       <div class="type-grid">
@@ -779,6 +811,8 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>07</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -806,7 +840,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">§</div><h3>심화와 기본의 세부적 차이</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>심화와 기본의 세부적 차이</h3></div>
     <div class="bd">
       <div class="tbl-wrap" style="margin-top:0;">
         <table class="tbl">
@@ -823,7 +857,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">§</div><h3>급수별 활용 분야</h3></div>
+    <div class="mh"><div class="ic">Q2</div><h3>급수별 활용 분야</h3></div>
     <div class="bd">
       <div class="tbl-wrap" style="margin-top:0;">
         <table class="tbl">
@@ -840,8 +874,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>08</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -862,7 +894,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">☆</div><h3>필수 인물 및 필수 주제</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>필수 인물 및 필수 주제</h3></div>
     <div class="bd">
       <ul class="era-list">
         <li><span class="tag">선사~고대</span><div><strong>국왕</strong> — 고구려: 광개토왕·장수왕·영양왕 / 백제: 근초고왕·무령왕·성왕 / 신라: 진흥왕·무열왕·김유신&nbsp;&nbsp;·&nbsp;&nbsp;<strong>주제</strong> — 불교(원효·의상), 무역(장보고)</div></li>
@@ -877,6 +909,8 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>09</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -899,7 +933,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <p style="font-size:var(--fs-xs);color:var(--muted);margin-top:1.6mm;">※ 심화는 자료를 종합·추론해야 정답에 도달하고, 기본은 순차적 사실 파악만으로 해결되는 경우가 많습니다. — 앞서 다룬 '이해·자료·흐름'의 차이가 실제 문제에 그대로 반영된 예시입니다.</p>
 
   <div class="blk" style="margin-top:5mm;">
-    <div class="mh"><div class="ic">i</div><h3>한국사능력검정시험 응시 방법</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>한국사능력검정시험 응시 방법</h3></div>
     <div class="bd">
       <p>한국사능력검정시험은 <strong>1년에 4번</strong> 실시되며, 원서접수일도 함께 공개됩니다. 아래는 2025년 시행 일정 예시입니다.</p>
       <div class="tbl-wrap" style="margin-top:2mm;">
@@ -920,8 +954,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>10</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
@@ -968,11 +1000,21 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>11</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">03 시험 과목 및 유형별 문항 수·배점·출제 범위</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 03</span>
-    <h2>시험 과목 및 유형별 문항 수, 배점, 출제 범위</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>03</b></span>
+      <span class="chx-sep"></span>
+      <h2>시험 과목 및 유형별 문항 수, 배점, 출제 범위</h2>
+    </div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="tbl-wrap">
@@ -1023,18 +1065,24 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>12</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 모집인원 추이</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 04</span>
-    <h2>모집인원 추이 (2024 · 2025 · 2026학년도)</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>04</b></span>
+      <span class="chx-sep"></span>
+      <h2>모집인원 추이 (2024 · 2025 · 2026학년도)</h2>
+    </div>
     <div class="lead">전체 41개 과목 기준, TO(모집인원) 3개년 비교</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Σ</div><h3>전체 모집인원 총계</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>전체 모집인원 총계</h3></div>
     <div class="bd">
       <div class="ychart">
         <div class="yb"><div class="val">5,326</div><div class="col" style="height:52%;"></div><div class="yr">2024학년도</div></div>
@@ -1071,6 +1119,8 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>13</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 모집인원 추이</span></div>
   <div class="ch">
@@ -1148,18 +1198,24 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>14</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">05 면접 준비방법</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 05</span>
-    <h2>면접 준비방법</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>05</b></span>
+      <span class="chx-sep"></span>
+      <h2>면접 준비방법</h2>
+    </div>
     <div class="lead">출처 : 해커스임용 합격로드맵 종합편</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>2차 면접의 의미와 평가 요소</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>2차 면접의 의미와 평가 요소</h3></div>
     <div class="bd">
       <p>면접(interview)은 지필검사로 측정할 수 없는 신체적·정의적 특성을 평가하는 방법으로, 국가관·교직관·수업관·사회 현안에 대한 견해·논리성·용모예의 등을 살펴봅니다.</p>
       <div class="stats">
@@ -1170,7 +1226,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">2</div><h3>개별면접 진행 절차</h3></div>
+    <div class="mh"><div class="ic">Q2</div><h3>개별면접 진행 절차</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div><strong>대기실</strong> — 안내 방송·감독관 안내에 따라 대기, 관리번호 추첨으로 순서·좌석 결정</div></li>
@@ -1193,16 +1249,26 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>15</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">06 합격자 선정 방법</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 06</span>
-    <h2>합격자 선정 방법</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>06</b></span>
+      <span class="chx-sep"></span>
+      <h2>합격자 선정 방법</h2>
+    </div>
     <div class="lead">출처 : 교육공무원 임용후보자 선정경쟁시험규칙</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>제1차 시험 합격자 결정</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>제1차 시험 합격자 결정</h3></div>
     <div class="bd">
       <p>각 과목 만점의 <strong>40% 이상</strong>을 득점한 사람 중, 아래 점수가 높은 사람부터 차례로 결정합니다.</p>
       <div class="notice" style="margin-top:2mm;">
@@ -1222,8 +1288,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>16</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">06 합격자 선정 방법</span></div>
   <div class="ch">
@@ -1233,7 +1297,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">2</div><h3>최종 합격자 결정</h3></div>
+    <div class="mh"><div class="ic">Q2</div><h3>최종 합격자 결정</h3></div>
     <div class="bd">
       <p>1차 시험 성적과 2차 시험 성적에 각각 가점을 더한 최종 점수가 높은 사람부터 차례로 결정합니다.</p>
       <div class="notice" style="margin-top:2mm;">
@@ -1259,12 +1323,22 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>17</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">07 평가원에 자주 묻는 질문</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 07</span>
-    <h2>평가원에 자주 묻는 질문</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>07</b></span>
+      <span class="chx-sep"></span>
+      <h2>평가원에 자주 묻는 질문</h2>
+    </div>
     <div class="lead">출처 : 한국교육과정평가원</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
@@ -1294,18 +1368,24 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>18</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">08 응시자 유의사항</span></div>
-  <div class="ch">
-    <span class="chno">CHAPTER 08</span>
-    <h2>응시자 유의사항 — 1차 시험</h2>
+  <div class="chx">
+    <div class="chx-top">
+      <img class="chx-sign" src="data:image/png;base64,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" alt="">
+      <span class="chx-dots"></span>
+      <span class="chx-tag">합격 로드맵 01</span>
+    </div>
+    <div class="chx-title">
+      <span class="chx-no"><span class="chx-eyebrow">CHAPTER</span><b>08</b></span>
+      <span class="chx-sep"></span>
+      <h2>응시자 유의사항 — 1차 시험</h2>
+    </div>
     <div class="lead">출처 : 교육공무원 임용후보자 선정경쟁시험 문제지 유의사항</div>
+    <div class="chx-rule"></div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>답안지 작성 공통 유의사항 (교육학·전공 공통)</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>답안지 작성 공통 유의사항 (교육학·전공 공통)</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div>문제지(초안 작성 용지 포함)와 답안지의 전체 면수·인쇄 상태를 먼저 확인</div></li>
@@ -1331,6 +1411,8 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>19</b></div>
 </section>
+</div>
+<div class="spread">
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">08 응시자 유의사항</span></div>
   <div class="ch">
@@ -1339,7 +1421,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">1</div><h3>수업실연 · 심층면접 공통 절차</h3></div>
+    <div class="mh"><div class="ic">Q1</div><h3>수업실연 · 심층면접 공통 절차</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">·</span><div>구상실 입실 시 <strong>관리번호만 기재</strong>(수험번호·성명 기재 금지), 개인 소지품은 복도 지정 장소에 보관</div></li>
@@ -1363,8 +1445,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>20</b></div>
 </section>
-</div>
-<div class="spread">
 <section class="page nopad part-cover">
   <div class="deco p1"></div>
   <div class="deco p2"></div>
@@ -1379,6 +1459,8 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
     </div>
   </div>
 </section>
+</div>
+<div class="spread">
 <section class="page" style="position:relative;">
   <div class="mockup-flag">가안 · MOCKUP</div>
   <div class="rhead"><span>PART 02 · 과목별 선생님이 전하는 합격 전략</span><span class="r">01 교육학</span></div>
