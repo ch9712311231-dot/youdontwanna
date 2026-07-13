@@ -266,7 +266,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .blk:first-of-type{margin-top:0;}
 .blk .mh{display:flex; align-items:center; gap:1.9mm; background:var(--sky-100);
   padding:2mm 3.2mm; border-bottom:.4mm solid var(--line);}
-.blk .mh .ic{min-width:4.5mm;height:4.5mm;padding:0 1.3mm;border-radius:var(--r-pill);background:var(--brand);flex-shrink:0;
+.blk .mh .ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.2pt;font-weight:800;}
 .blk .mh h3{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink);}
 .blk .bd{padding:3mm 3.2mm;}
@@ -290,10 +290,11 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 table.tbl{width:100%; border-collapse:collapse; font-size:var(--fs-sm);}
 table.tbl th{background:var(--brand-deep); color:#fff; font-weight:700; font-size:var(--fs-xs);
   padding:1.8mm 2mm; text-align:center; letter-spacing:.01em;}
+table.tbl th + th{border-left:.3mm solid rgba(255,255,255,.25);}
 table.tbl td{padding:1.6mm 2mm; border-top:.3mm solid var(--line); text-align:center; color:var(--ink-soft); vertical-align:middle; line-height:1.45;}
+table.tbl td + td{border-left:.3mm solid var(--line);}
 table.tbl tr:first-child td{border-top:none;}
 table.tbl td.l{text-align:left;}
-table.tbl tr:nth-child(even) td{background:var(--sky-50);}
 table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 
 /* 용어 정의 2열 */
@@ -348,11 +349,12 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 
 /* 유형 카드 그리드(한국사 6유형 등) */
 .type-grid{display:grid; grid-template-columns:1fr 1fr; gap:2.2mm; margin-top:1.5mm;}
-.type-grid .tc{background:var(--sky-50); border:.4mm solid var(--sky-200); border-radius:var(--r-md); padding:2.2mm 3mm;}
-.type-grid .tc .tn{display:inline-flex; align-items:center; justify-content:center; width:4.5mm; height:4.5mm;
-  border-radius:50%; background:var(--brand-deep); color:#fff; font-weight:800; font-size:7.2pt; margin-bottom:1.2mm;}
-.type-grid .tc .tt{font-weight:800; color:var(--brand-ink); font-size:var(--fs-sm); margin-bottom:.8mm;}
-.type-grid .tc .td{font-size:var(--fs-xs); color:var(--ink-soft); line-height:1.45;}
+.type-grid .tc{background:var(--sky-50); border:.4mm solid var(--sky-200); border-radius:var(--r-md); padding:2.2mm 3mm;
+  display:grid; grid-template-columns:4.5mm 1fr; grid-template-rows:auto auto; align-items:center; gap:.8mm 1.5mm;}
+.type-grid .tc .tn{grid-row:1; grid-column:1; display:flex; align-items:center; justify-content:center; width:4.5mm; height:4.5mm;
+  border-radius:50%; background:var(--brand-deep); color:#fff; font-weight:800; font-size:7.2pt;}
+.type-grid .tc .tt{grid-row:1; grid-column:2; font-weight:800; color:var(--brand-ink); font-size:var(--fs-sm);}
+.type-grid .tc .td{grid-row:2; grid-column:1/-1; font-size:var(--fs-xs); color:var(--ink-soft); line-height:1.45;}
 
 /* Q&A 카드 */
 .qa-blk{margin-top:3mm;}

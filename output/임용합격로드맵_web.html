@@ -273,7 +273,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .blk:first-of-type{margin-top:0;}
 .blk .mh{display:flex; align-items:center; gap:1.9mm; background:var(--sky-100);
   padding:2mm 3.2mm; border-bottom:.4mm solid var(--line);}
-.blk .mh .ic{min-width:4.5mm;height:4.5mm;padding:0 1.3mm;border-radius:var(--r-pill);background:var(--brand);flex-shrink:0;
+.blk .mh .ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.2pt;font-weight:800;}
 .blk .mh h3{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink);}
 .blk .bd{padding:3mm 3.2mm;}
@@ -297,10 +297,11 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 table.tbl{width:100%; border-collapse:collapse; font-size:var(--fs-sm);}
 table.tbl th{background:var(--brand-deep); color:#fff; font-weight:700; font-size:var(--fs-xs);
   padding:1.8mm 2mm; text-align:center; letter-spacing:.01em;}
+table.tbl th + th{border-left:.3mm solid rgba(255,255,255,.25);}
 table.tbl td{padding:1.6mm 2mm; border-top:.3mm solid var(--line); text-align:center; color:var(--ink-soft); vertical-align:middle; line-height:1.45;}
+table.tbl td + td{border-left:.3mm solid var(--line);}
 table.tbl tr:first-child td{border-top:none;}
 table.tbl td.l{text-align:left;}
-table.tbl tr:nth-child(even) td{background:var(--sky-50);}
 table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 
 /* 용어 정의 2열 */
@@ -355,11 +356,12 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 
 /* 유형 카드 그리드(한국사 6유형 등) */
 .type-grid{display:grid; grid-template-columns:1fr 1fr; gap:2.2mm; margin-top:1.5mm;}
-.type-grid .tc{background:var(--sky-50); border:.4mm solid var(--sky-200); border-radius:var(--r-md); padding:2.2mm 3mm;}
-.type-grid .tc .tn{display:inline-flex; align-items:center; justify-content:center; width:4.5mm; height:4.5mm;
-  border-radius:50%; background:var(--brand-deep); color:#fff; font-weight:800; font-size:7.2pt; margin-bottom:1.2mm;}
-.type-grid .tc .tt{font-weight:800; color:var(--brand-ink); font-size:var(--fs-sm); margin-bottom:.8mm;}
-.type-grid .tc .td{font-size:var(--fs-xs); color:var(--ink-soft); line-height:1.45;}
+.type-grid .tc{background:var(--sky-50); border:.4mm solid var(--sky-200); border-radius:var(--r-md); padding:2.2mm 3mm;
+  display:grid; grid-template-columns:4.5mm 1fr; grid-template-rows:auto auto; align-items:center; gap:.8mm 1.5mm;}
+.type-grid .tc .tn{grid-row:1; grid-column:1; display:flex; align-items:center; justify-content:center; width:4.5mm; height:4.5mm;
+  border-radius:50%; background:var(--brand-deep); color:#fff; font-weight:800; font-size:7.2pt;}
+.type-grid .tc .tt{grid-row:1; grid-column:2; font-weight:800; color:var(--brand-ink); font-size:var(--fs-sm);}
+.type-grid .tc .td{grid-row:2; grid-column:1/-1; font-size:var(--fs-xs); color:var(--ink-soft); line-height:1.45;}
 
 /* Q&A 카드 */
 .qa-blk{margin-top:3mm;}
@@ -643,14 +645,14 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>중등교사 임용시험은 어떤 시험인가?</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>중등교사 임용시험은 어떤 시험인가?</h3></div>
     <div class="bd">
       <p>정식 시험명은 <strong>'공립(국·사립) 중등학교교사 임용후보자 선정경쟁시험'</strong>으로, 합리적인 방법과 절차를 통하여 수준 높은 양질의 문항을 출제하여 교사로서의 전문적인 능력을 측정하는 평가입니다. 공정하고 객관적이며 신뢰성 있는 중등교사 임용 전형 자료를 제공합니다.</p>
     </div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q2</div><h3>근거 법령과 시험관리기관 소개</h3></div>
+    <div class="mh"><div class="ic">2</div><h3>근거 법령과 시험관리기관 소개</h3></div>
     <div class="bd">
       <p>「교육공무원법 및 교육공무원임용령」과 「교육공무원 임용후보자 선정경쟁시험규칙」을 근거로 시행됩니다. 시험관리기관은 &lt;시·도교육청&gt;과 &lt;한국교육과정평가원&gt;으로 나뉩니다.</p>
       <ul class="plist2">
@@ -661,7 +663,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q3</div><h3>시험 일정</h3></div>
+    <div class="mh"><div class="ic">3</div><h3>시험 일정</h3></div>
     <div class="bd">
       <p>시험 일정은 각 시·도 교육청 홈페이지의 공고문을 참고하시기 바랍니다.</p>
     </div>
@@ -688,7 +690,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>시험 응시를 위한 제출 서류</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>시험 응시를 위한 제출 서류</h3></div>
     <div class="bd">
       <p>「교육공무원 임용후보자 선정경쟁시험규칙」 제10조(제출서류)에서는 중등임용시험 응시를 위한 기본 제출 서류를 명시하고 있습니다.</p>
       <h4>1) 한국사능력검정시험 3급 이상 자격증 보유</h4>
@@ -747,21 +749,28 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span></div>
   <div class="ch">
-    <span class="chno">잠깐!</span>
-    <h2>교원자격이란?</h2>
+    <div style="display:flex;align-items:center;gap:3mm;margin-bottom:2mm;">
+      <div style="width:13mm;height:13mm;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <img src="data:image/png;base64,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" alt="잠깐" style="width:10mm;height:10mm;object-fit:contain;"/>
+      </div>
+      <div>
+        <div style="font-size:11pt;font-weight:900;color:var(--brand);letter-spacing:.04em;margin-bottom:.2mm;">잠깐!</div>
+        <h2 style="margin:0;">교원자격이란?</h2>
+      </div>
+    </div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>초·중등교육법 제21조(교원의 자격)</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>초·중등교육법 제21조(교원의 자격)</h3></div>
     <div class="bd">
       <p>교사는 정교사(1급·2급), 준교사, 전문상담교사(1급·2급), 사서교사(1급·2급), 실기교사, 보건교사(1급·2급) 및 영양교사(1급·2급)로 나뉘되, 별표2의 자격 기준에 해당하는 사람으로서 대통령령으로 정하는 바에 따라 교육부장관이 검정·수여하는 자격증을 받은 사람이어야 합니다.</p>
     </div>
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q2</div><h3>정교사 2급 관련 별표 2 (중등학교)</h3></div>
+    <div class="mh"><div class="ic">2</div><h3>정교사 2급 관련 별표 2 (중등학교)</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div>사범대학을 졸업한 사람</div></li>
@@ -780,65 +789,70 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>06</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead" style="justify-content:flex-end;"><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>한국사능력검정시험이란?</h2>
-    <div class="credit">글 · 오태진 강사(전공역사)</div>
-  </div>
-
-  <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>한국사능력검정시험의 출제유형</h3></div>
-    <div class="bd">
-      <p>한국사능력검정시험의 문항은 역사교육의 목표 준거에 따라 다음의 여섯 가지 유형으로 구분됩니다.</p>
-      <div class="type-grid">
-        <div class="tc"><div class="tn">1</div><div class="tt">역사 지식의 이해</div><div class="td">역사 탐구에 필요한 기본적인 지식과 역사적 사실·개념·원리 등의 이해 정도를 측정</div></div>
-        <div class="tc"><div class="tn">2</div><div class="tt">연대기의 파악</div><div class="td">역사의 연속성과 변화·발전 이해, 시대 순 인과관계 파악 능력을 측정</div></div>
-        <div class="tc"><div class="tn">3</div><div class="tt">역사 상황 및 쟁점의 인식</div><div class="td">문헌자료·도표·사진 등에서 핵심 상황과 논쟁점·주장을 찾는 능력을 측정</div></div>
-        <div class="tc"><div class="tn">4</div><div class="tt">역사 자료의 분석 및 해석</div><div class="td">자료의 정보를 해석해 시대적 배경과 사회적 의미를 파악하는 능력을 측정</div></div>
-        <div class="tc"><div class="tn">5</div><div class="tt">역사 탐구의 설계 및 수행</div><div class="td">문제의 성격·목적에 맞게 절차와 방법에 따라 탐구를 설계·수행하는 능력을 측정</div></div>
-        <div class="tc"><div class="tn">6</div><div class="tt">결론의 도출 및 평가</div><div class="td">자료의 타당성을 판별하고 여러 자료를 종합해 결론을 도출하는 능력을 측정</div></div>
+    <div style="display:flex;align-items:center;gap:3mm;margin-bottom:2mm;">
+      <div style="width:13mm;height:13mm;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <img src="data:image/png;base64,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" alt="참고" style="width:10mm;height:10mm;object-fit:contain;"/>
+      </div>
+      <div style="padding-top:1.7mm;">
+        <div class="credit" style="margin-bottom:1mm;">글 · 오태진 전공역사</div>
+        <h2 style="margin:0;">한국사능력검정시험이란?</h2>
       </div>
     </div>
   </div>
 
-  <div class="tip">
-    <div class="t">TIP · 임용 수험생 관점 요약</div>
-    <p>단순 암기보다 <strong>사건의 흐름(Story)</strong>과 <strong>자료 해석력</strong>을 함께 묻는 시험입니다. 뒤에 나오는 '공부 비법'과 함께 읽으면 학습 방향을 빠르게 잡을 수 있습니다.</p>
+  <div class="ch" style="margin-top:-2mm;margin-bottom:2mm;">
+    <h2>1. 한국사능력검정시험의 출제 유형</h2>
   </div>
+  <p>한국사능력검정시험의 문항은 역사교육의 목표 준거에 따라 다음의 여섯 가지 유형으로 구분됩니다.</p>
+  <div class="type-grid" style="margin-top:5mm;">
+    <div class="tc"><div class="tn">1</div><div class="tt">역사 지식의 이해</div><div class="td">역사 탐구에 필요한 기본적인 지식과 역사적 사실·개념·원리 등의 이해 정도를 측정</div></div>
+    <div class="tc"><div class="tn">2</div><div class="tt">연대기의 파악</div><div class="td">역사의 연속성과 변화·발전 이해, 시대 순 인과관계 파악 능력을 측정</div></div>
+    <div class="tc"><div class="tn">3</div><div class="tt">역사 상황 및 쟁점의 인식</div><div class="td">문헌자료·도표·사진 등에서 핵심 상황과 논쟁점·주장을 찾는 능력을 측정</div></div>
+    <div class="tc"><div class="tn">4</div><div class="tt">역사 자료의 분석 및 해석</div><div class="td">자료의 정보를 해석해 시대적 배경과 사회적 의미를 파악하는 능력을 측정</div></div>
+    <div class="tc"><div class="tn">5</div><div class="tt">역사 탐구의 설계 및 수행</div><div class="td">문제의 성격·목적에 맞게 절차와 방법에 따라 탐구를 설계·수행하는 능력을 측정</div></div>
+    <div class="tc"><div class="tn">6</div><div class="tt">결론의 도출 및 평가</div><div class="td">자료의 타당성을 판별하고 여러 자료를 종합해 결론을 도출하는 능력을 측정</div></div>
+  </div>
+
 
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>07</b></div>
 </section>
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>한국사능력검정시험의 구분</h2>
-    <div class="credit">글 · 오태진 강사(전공역사)</div>
+    <h2>2. 한국사능력검정시험의 구분</h2>
   </div>
 
   <p>한국사능력검정시험은 <strong>기본과 심화</strong>로 나뉩니다. 기본(4·5·6급)과 심화(1·2·3급)는 난이도가 다르고, 취득할 수 있는 자격증의 종류도 나뉩니다.</p>
 
   <div class="tbl-wrap">
     <table class="tbl">
-      <colgroup><col style="width:26%"><col style="width:37%"><col style="width:37%"></colgroup>
+      <colgroup><col style="width:22%"><col style="width:39%"><col style="width:39%"></colgroup>
       <thead><tr><th>시험구분</th><th>심화</th><th>기본</th></tr></thead>
       <tbody>
-        <tr><td class="l"><strong>인증등급</strong></td><td>1급(80점 이상) · 2급(70~79점) · 3급(60~69점)</td><td>4급(80점 이상) · 5급(70~79점) · 6급(60~69점)</td></tr>
-        <tr><td class="l"><strong>문항수</strong></td><td>50문항 (5지 택1형)</td><td>40문항 (4지 택1형)</td></tr>
+        <tr>
+          <td rowspan="3" style="vertical-align:middle;"><strong>인증 등급</strong></td>
+          <td>1급 (80점 이상)</td>
+          <td>4급 (80점 이상)</td>
+        </tr>
+        <tr>
+          <td style="border-left:.3mm solid var(--line);">2급 (70~79점)</td>
+          <td>5급 (70~79점)</td>
+        </tr>
+        <tr>
+          <td style="border-left:.3mm solid var(--line);">3급 (60~69점)</td>
+          <td>6급 (60~69점)</td>
+        </tr>
+        <tr><td><strong>문항 수</strong></td><td>50문항 (5지 택1형)</td><td>40문항 (4지 택1형)</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="notice">
-    9급 공무원, 경찰, 소방, 임용 등은 주로 <b>3급 자격증</b>을 요구합니다. 한국사능력검정시험 3급이 없으면 임용시험 합격 조건을 충족하지 못합니다.<br>
-    ※ 시험 직전이라도 응시표로 원서 접수는 가능하나, 3급 미취득 시 1차 합격을 해도 탈락 처리됩니다.
-  </div>
-
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>심화와 기본의 세부적 차이</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>심화와 기본의 세부적 차이</h3></div>
     <div class="bd">
       <div class="tbl-wrap" style="margin-top:0;">
         <table class="tbl">
@@ -855,7 +869,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q2</div><h3>급수별 활용 분야</h3></div>
+    <div class="mh"><div class="ic">2</div><h3>급수별 활용 분야</h3></div>
     <div class="bd">
       <div class="tbl-wrap" style="margin-top:0;">
         <table class="tbl">
@@ -873,11 +887,9 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>08</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead" style="justify-content:flex-end;"><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>중요 출제 기준 — 시대별 비중</h2>
-    <div class="credit">글 · 오태진 강사(전공역사)</div>
+    <h2>3. 중요 출제 기준 — 시대별 비중</h2>
   </div>
 
   <div class="tbl-wrap">
@@ -892,7 +904,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>필수 인물 및 필수 주제</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>필수 인물 및 필수 주제</h3></div>
     <div class="bd">
       <ul class="era-list">
         <li><span class="tag">선사~고대</span><div><strong>국왕</strong> — 고구려: 광개토왕·장수왕·영양왕 / 백제: 근초고왕·무령왕·성왕 / 신라: 진흥왕·무열왕·김유신&nbsp;&nbsp;·&nbsp;&nbsp;<strong>주제</strong> — 불교(원효·의상), 무역(장보고)</div></li>
@@ -910,11 +922,10 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 </div>
 <div class="spread">
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>문제로 보는 심화·기본의 차이</h2>
-    <div class="credit">글 · 오태진 강사(전공역사)</div>
+    <h2>4. 문제로 보는 심화·기본의 차이</h2>
+    <div class="credit">글 · 오태진 전공역사</div>
   </div>
 
   <div class="tbl-wrap">
@@ -931,7 +942,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <p style="font-size:var(--fs-xs);color:var(--muted);margin-top:1.6mm;">※ 심화는 자료를 종합·추론해야 정답에 도달하고, 기본은 순차적 사실 파악만으로 해결되는 경우가 많습니다. — 앞서 다룬 '이해·자료·흐름'의 차이가 실제 문제에 그대로 반영된 예시입니다.</p>
 
   <div class="blk" style="margin-top:5mm;">
-    <div class="mh"><div class="ic">Q1</div><h3>한국사능력검정시험 응시 방법</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>한국사능력검정시험 응시 방법</h3></div>
     <div class="bd">
       <p>한국사능력검정시험은 <strong>1년에 4번</strong> 실시되며, 원서접수일도 함께 공개됩니다. 아래는 2025년 시행 일정 예시입니다.</p>
       <div class="tbl-wrap" style="margin-top:2mm;">
@@ -953,11 +964,10 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   <div class="folio"><span>PART 01 — 중등 임용고시 이해하기</span><b>10</b></div>
 </section>
 <section class="page">
-  <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">02 중등 임용시험의 기본 조건</span></div>
+  <div class="rhead" style="justify-content:flex-end;"><span class="r">02 중등 임용시험의 기본 조건</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 02</span>
-    <h2>한국사능력검정시험 공부 비법</h2>
-    <div class="credit">글 · 오태진 강사(전공역사)</div>
+    <h2>5. 한국사능력검정시험 공부 비법</h2>
+    <div class="credit">글 · 오태진 전공역사</div>
   </div>
 
   <div class="blk">
@@ -1080,7 +1090,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>전체 모집인원 총계</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>전체 모집인원 총계</h3></div>
     <div class="bd">
       <div class="ychart">
         <div class="yb"><div class="val">5,326</div><div class="col" style="height:52%;"></div><div class="yr">2024학년도</div></div>
@@ -1213,7 +1223,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>2차 면접의 의미와 평가 요소</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>2차 면접의 의미와 평가 요소</h3></div>
     <div class="bd">
       <p>면접(interview)은 지필검사로 측정할 수 없는 신체적·정의적 특성을 평가하는 방법으로, 국가관·교직관·수업관·사회 현안에 대한 견해·논리성·용모예의 등을 살펴봅니다.</p>
       <div class="stats">
@@ -1224,7 +1234,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q2</div><h3>개별면접 진행 절차</h3></div>
+    <div class="mh"><div class="ic">2</div><h3>개별면접 진행 절차</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div><strong>대기실</strong> — 안내 방송·감독관 안내에 따라 대기, 관리번호 추첨으로 순서·좌석 결정</div></li>
@@ -1266,7 +1276,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>제1차 시험 합격자 결정</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>제1차 시험 합격자 결정</h3></div>
     <div class="bd">
       <p>각 과목 만점의 <strong>40% 이상</strong>을 득점한 사람 중, 아래 점수가 높은 사람부터 차례로 결정합니다.</p>
       <div class="notice" style="margin-top:2mm;">
@@ -1295,7 +1305,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q2</div><h3>최종 합격자 결정</h3></div>
+    <div class="mh"><div class="ic">2</div><h3>최종 합격자 결정</h3></div>
     <div class="bd">
       <p>1차 시험 성적과 2차 시험 성적에 각각 가점을 더한 최종 점수가 높은 사람부터 차례로 결정합니다.</p>
       <div class="notice" style="margin-top:2mm;">
@@ -1383,7 +1393,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>답안지 작성 공통 유의사항 (교육학·전공 공통)</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>답안지 작성 공통 유의사항 (교육학·전공 공통)</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">1</span><div>문제지(초안 작성 용지 포함)와 답안지의 전체 면수·인쇄 상태를 먼저 확인</div></li>
@@ -1419,7 +1429,7 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
   </div>
 
   <div class="blk">
-    <div class="mh"><div class="ic">Q1</div><h3>수업실연 · 심층면접 공통 절차</h3></div>
+    <div class="mh"><div class="ic">1</div><h3>수업실연 · 심층면접 공통 절차</h3></div>
     <div class="bd">
       <ul class="plist2">
         <li><span class="pn">·</span><div>구상실 입실 시 <strong>관리번호만 기재</strong>(수험번호·성명 기재 금지), 개인 소지품은 복도 지정 장소에 보관</div></li>
