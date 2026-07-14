@@ -273,7 +273,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .blk:first-of-type{margin-top:0;}
 .blk .mh{display:flex; align-items:center; gap:1.9mm; background:var(--sky-100);
   padding:2mm 3.2mm; border-bottom:.4mm solid var(--line);}
-.blk .mh .ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
+.ic{width:4.5mm;height:4.5mm;border-radius:50%;background:var(--brand);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:7.2pt;font-weight:800;}
 .blk .mh h3{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink);}
 .blk .bd{padding:3mm 3.2mm;}
@@ -366,10 +366,10 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 /* Q&A 카드 */
 .qa-blk{margin-top:3mm;}
 .qa-blk .q{display:flex; gap:1.9mm; align-items:baseline; font-weight:800; color:var(--brand-ink); font-size:var(--fs-body);}
-.qa-blk .q .qtag{flex-shrink:0; background:var(--brand); color:#fff; font-size:var(--fs-xs); font-weight:800;
-  padding:.5mm 2mm; border-radius:var(--r-pill);}
+.qa-blk .q .qtag{flex-shrink:0; width:7mm; box-sizing:border-box; text-align:center; background:var(--brand); color:#fff; font-size:var(--fs-xs); font-weight:800;
+  padding:.5mm 0; border-radius:var(--r-pill);}
 .qa-blk .a{display:flex; gap:1.9mm; margin-top:1mm;}
-.qa-blk .a .atag{flex-shrink:0; color:var(--brand); font-weight:800; font-size:var(--fs-body);}
+.qa-blk .a .atag{flex-shrink:0; width:7mm; box-sizing:border-box; text-align:center; color:var(--brand); font-weight:800; font-size:var(--fs-body);}
 .qa-blk .a p{margin-bottom:0;}
 
 /* 연도별 총계 막대 차트 */
@@ -489,7 +489,6 @@ table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 <section class="page">
   <div class="rhead"><span>PART 01 · 중등 임용고시 이해하기</span><span class="r">04 모집인원 추이</span></div>
   <div class="ch">
-    <span class="chno">CHAPTER 04</span>
     <h2>과목별 모집인원(TO) 3개년 추이</h2>
     <div class="lead">단위: 명 · 증감은 2025학년도 대비 2026학년도</div>
   </div>
