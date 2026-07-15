@@ -60,7 +60,7 @@
 
   --ff: 'Pretendard', 'Malgun Gothic', sans-serif;
 
-  --fs-cover  : 37pt;
+  --fs-cover  : 60pt;
   --fs-h1     : 18pt;
   --fs-h2     : 13.5pt;
   --fs-h3     : 10.5pt;
@@ -126,17 +126,6 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover .deco.d2{width:50mm; height:50mm; bottom:19mm; right:-19mm; background:rgba(255,255,255,.4);}
 .cover .deco.d3{width:33mm; height:33mm; bottom:-10mm; left:13mm; background:rgba(10,74,92,.06);}
 
-/* 1위 딱지(리본) — 상단 좌측 */
-.cover .ribbon{position:absolute; top:0; left:8mm; width:22mm; height:22mm; z-index:3;
-  background:var(--brand-ink); color:#fff; text-align:center;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; padding-bottom:3.2mm;
-  clip-path:polygon(0 0,100% 0,100% 76%,50% 92%,0 76%);
-  box-shadow:0 2mm 4mm rgba(6,40,54,.22);}
-.cover .ribbon .r1{font-size:6.8pt; font-weight:700; letter-spacing:.02em; color:#BFEAF2;}
-.cover .ribbon .r2{font-size:11.5pt; font-weight:900; margin-top:1mm; line-height:1.12;}
-.cover .ribbon-cap{position:absolute; top:24mm; left:8mm; width:27mm; z-index:3;
-  font-size:5pt; color:var(--brand-ink); opacity:.7; line-height:1.5; font-weight:600;}
-
 /* QR 코드 자리(추후 반영) — 우측 상단, 홈페이지 바로가기 라벨 포함 */
 .cover .qrspot{position:absolute; top:10mm; right:12mm; z-index:3;
   display:flex; flex-direction:column; align-items:center; gap:1.6mm;}
@@ -145,14 +134,11 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
   text-align:center; font-size:6pt; color:var(--muted); line-height:1.4;}
 .cover .qrspot .qrlabel{font-size:6.5pt; font-weight:700; color:var(--brand-deep); opacity:.8; letter-spacing:.01em;}
 
-.cover .inner{position:relative; z-index:2; padding:40mm 12mm 0 8mm; width:100%;}
-.cover .eyebrow{display:inline-flex; align-items:center; background:rgba(255,255,255,.92);
-  color:var(--brand-deep); font-weight:800; font-size:11pt; letter-spacing:.01em;
-  padding:2.9mm 6.5mm; border-radius:var(--r-pill); box-shadow:0 1.2mm 3mm rgba(10,74,92,.08);}
-.cover .title{font-weight:900; font-size:var(--fs-cover);
-  line-height:1.08; margin-top:14mm; letter-spacing:-.03em;}
-.cover .title .t1{color:var(--brand-ink);}
-.cover .title .t2{color:var(--brand);}
+.cover .inner{position:relative; z-index:2; padding:26mm 12mm 0 8mm; width:100%;}
+.cover .title{font-weight:900; letter-spacing:-.03em;}
+.cover .title .tname{display:block; font-size:30pt; color:var(--brand-ink);
+  line-height:1.15; margin-bottom:3mm;}
+.cover .title .tmain{display:block; font-size:var(--fs-cover); color:var(--brand); line-height:1.02;}
 .cover .subtitle{margin-top:16mm; display:inline-block; background:var(--brand-ink);
   color:var(--white); font-weight:700; font-size:11pt; padding:3.3mm 7mm;
   border-radius:1.8mm;}
@@ -237,6 +223,22 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .foreword p{margin-bottom:4.5mm;}
 .foreword .fw-lead{font-size:var(--fs-h2); font-weight:800; color:var(--brand); line-height:1.5; margin-bottom:4mm;}
 .foreword p:has(+ .fw-lead){margin-bottom:8mm;}
+
+/* ── 판권(교재 내지 정보) ── */
+.colophon{flex:1; display:flex; flex-direction:column; justify-content:flex-end;}
+.colophon .co-title{margin-bottom:10mm;}
+.colophon .co-title .co-name{display:block; font-size:15pt; font-weight:800; color:var(--brand-ink);
+  margin-bottom:2mm;}
+.colophon .co-title .co-main{display:block; font-size:32pt; font-weight:900; color:var(--brand);
+  line-height:1.06; letter-spacing:-.02em;}
+.colophon .co-table{border-top:.35mm solid var(--brand); padding-top:1.4mm;}
+.colophon .co-group{border-top:.35mm solid var(--brand); padding-top:1.4mm; margin-top:1.4mm;}
+.colophon .co-row{display:flex; gap:4mm; padding:.4mm 0; font-size:8.6pt;}
+.colophon .co-row .co-k{width:32mm; flex-shrink:0; font-weight:800; color:var(--ink);}
+.colophon .co-row .co-v{color:var(--ink-soft); font-weight:500;}
+.colophon .co-copy{border-top:.35mm solid var(--brand); margin-top:2.6mm; padding-top:3.2mm;}
+.colophon .co-copy .co-copy-owner{font-size:8.2pt; font-weight:800; color:var(--ink); margin-bottom:1.6mm;}
+.colophon .co-copy p{font-size:7pt; color:var(--muted); line-height:1.55;}
 
 /* ── 섹션 헤더(본문 챕터) — 신규 시안(챕터 표지판 스타일), 03_ch01 페이지에서만 사용 ── */
 .chx{position:relative; margin-bottom:4.6mm;}
