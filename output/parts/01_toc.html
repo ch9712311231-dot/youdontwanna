@@ -8,8 +8,10 @@
 /* ============================================================
    해커스임용 합격로드맵 · 디자인 시스템 (book.css)
    판형: A5 148mm × 210mm (실물 인쇄 기준, 중철) + 사방 3mm 도련
-   인쇄: 2도인쇄 — 검정(K) + 브랜드 시안(#00ACC8, 스팟) 2가지 잉크의
+   인쇄: 2도인쇄 — 검정(K) + 브랜드 시안(PANTONE 3125 U, 스팟) 2가지 잉크의
          100% 또는 tint(옅은 농도)만 사용. 그 외 색상 금지.
+         PANTONE 3125 U 공식 디지털값(Uncoated) = #00ABC2 / CMYK C100 M14 Y0 K22.
+         그라데이션 전면 금지(인쇄소 2도 분판 시 그라데이션 표현 불가 — 전부 단색으로 대체).
    컨셉: 둥근 도형 전용(각진 도형 금지)
    ============================================================ */
 
@@ -43,9 +45,9 @@
   --r-pill: 999px;
 
   /* ── 색상: 2도인쇄 — 검정(K) + 브랜드 시안(#00ACC8, 스팟) ── */
-  --brand     : #00ACC8;                 /* 시안 잉크 100% */
-  --brand-deep: #017A93;                 /* 시안 잉크 진한 tint */
-  --brand-ink : #0A4A5C;                 /* 검정+시안 overprint(진한 톤) — 제목·강조용 */
+  --brand     : #00ABC2;                 /* 시안 잉크 100% — PANTONE 3125 U */
+  --brand-deep: #017A93;                 /* PANTONE 3125 U 100% + K 약 28% 오버프린트 */
+  --brand-ink : #0A4A5C;                 /* PANTONE 3125 U 100% + K 약 55% 오버프린트 — 제목·강조용 */
   --ink       : #181818;                 /* 검정 잉크 100% — 본문 글자 */
   --ink-soft  : #4D4D4D;                 /* 검정 tint(중립 회색) */
   --muted     : #8C8C8C;                 /* 검정 옅은 tint(중립 회색) */
@@ -119,7 +121,7 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .rhead .r{color:var(--brand-deep); font-weight:700;}
 
 /* ── 표지 (연한 하늘색 톤) ── */
-.cover{background:linear-gradient(168deg,#F2FBFD 0%, #DEF4FA 45%, #BFE8F2 100%);
+.cover{background:var(--sky-100);
   justify-content:flex-start; align-items:flex-start; padding:0; position:relative;}
 .cover .deco{position:absolute; border-radius:50%;}
 .cover .deco.d1{width:86mm; height:86mm; top:-33mm; left:-24mm; background:rgba(255,255,255,.55);}
@@ -180,7 +182,7 @@ body{font-family:var(--ff);color:var(--ink);-webkit-font-smoothing:antialiased;w
 .cover.back-cover .bsite{font-weight:600; color:var(--brand-deep); opacity:.75; font-size:8pt; letter-spacing:.08em;}
 
 /* ── 파트 표지(간지) ── */
-.part-cover{background:linear-gradient(155deg, var(--brand) 0%, var(--brand-ink) 100%);
+.part-cover{background:var(--brand-ink);
   justify-content:center; position:relative;}
 .part-cover .deco{position:absolute; border-radius:50%; background:rgba(255,255,255,.10);}
 .part-cover .deco.p1{width:65mm; height:65mm; top:-22mm; right:-18mm;}
@@ -320,7 +322,7 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 .stat .v small{font-size:7.2pt; font-weight:700; margin-left:.6mm;}
 
 /* ── 강사 소개 카드 (과목별 합격전략용) ── */
-.instructor{display:flex; gap:3.6mm; align-items:center; background:linear-gradient(135deg,var(--sky-100),var(--sky-50));
+.instructor{display:flex; gap:3.6mm; align-items:center; background:var(--sky-50);
   border-radius:var(--r-lg); padding:3.6mm 4.3mm; border:.4mm solid var(--sky-200);}
 .instructor .photo{width:19mm; height:19mm; border-radius:50%; background:var(--white);
   border:.8mm solid var(--white); box-shadow:0 1.2mm 3mm rgba(10,74,92,.16); overflow:hidden;
@@ -378,9 +380,9 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 .ychart{display:flex; align-items:flex-end; gap:5.8mm; height:26mm; padding:3mm 4.3mm 0; margin-top:1.5mm;}
 .ychart .yb{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:1.2mm;}
 .ychart .yb .val{font-weight:800; color:var(--brand-ink); font-size:8.2pt;}
-.ychart .yb .col{width:60%; background:linear-gradient(var(--brand),var(--brand-deep)); border-radius:1.6mm 1.6mm 0 0;}
+.ychart .yb .col{width:60%; background:var(--brand-deep); border-radius:1.6mm 1.6mm 0 0;}
 .ychart .yb .yr{font-size:var(--fs-xs); color:var(--muted); font-weight:700;}
-.ychart .yb.now .col{background:linear-gradient(#3FD7EA,var(--brand-deep));}
+.ychart .yb.now .col{background:var(--brand);}
 .ychart .yb.now .val{color:var(--brand-deep); font-size:9.5pt;}
 
 /* 증감 미니 리스트 */
