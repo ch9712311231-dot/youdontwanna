@@ -365,7 +365,7 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 .qa-blk .q{display:flex; gap:1.9mm; align-items:baseline; font-weight:800; color:var(--brand-ink); font-size:var(--fs-body);}
 .qa-blk .q .qtag{flex-shrink:0; width:7mm; box-sizing:border-box; text-align:center; background:var(--brand); color:#fff; font-size:var(--fs-xs); font-weight:800;
   padding:.5mm 0; border-radius:var(--r-pill);}
-.qa-blk .a{display:flex; gap:1.9mm; margin-top:1mm;}
+.qa-blk .a{display:flex; gap:1.9mm; margin-top:1mm; align-items:baseline;}
 .qa-blk .a .atag{flex-shrink:0; width:7mm; box-sizing:border-box; text-align:center; color:var(--brand); font-weight:800; font-size:var(--fs-body);}
 .qa-blk .a p{margin-bottom:0;}
 
