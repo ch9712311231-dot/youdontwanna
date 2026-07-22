@@ -287,6 +287,14 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .plist2 li{list-style:none; display:flex; gap:1.2mm; align-items:flex-start; font-size:var(--fs-body); color:var(--ink-soft); line-height:1.55;}
 .plist2 li .pn{flex-shrink:0; width:1.8mm; height:1.8mm; border-radius:50%; background:var(--brand); font-size:0; margin-top:1.5mm;}
 
+/* 박스 없이 나열하는 번호 규정 목록(응시자 유의사항 등) */
+.rule-list{display:flex; flex-direction:column; gap:2mm;}
+.rule-list .ri{font-size:6.8pt; color:var(--ink-soft); line-height:1.42;}
+.rule-list .ri b{color:var(--brand-deep); font-weight:800; margin-right:1mm;}
+.rule-list .sub{margin:.6mm 0 0 6.6mm; display:flex; flex-direction:column; gap:.5mm;}
+.rule-list .sub div{display:flex; gap:1mm; font-size:6.1pt; color:var(--muted); line-height:1.35;}
+.rule-list .sub div::before{content:'◇'; flex-shrink:0; color:var(--brand);}
+
 /* 알림/주의 박스 (검정 tint, 둥근형) */
 .notice{border:.5mm dashed var(--gray-200); background:var(--gray-50); border-radius:var(--r-md);
   padding:3mm 3.6mm; margin-top:3mm; font-size:var(--fs-sm); color:var(--ink-soft); line-height:1.6;}
@@ -400,6 +408,7 @@ table.tbl .hl{color:var(--brand-deep); font-weight:800;}
 /* 2단 표 레이아웃(과목 다수용) */
 .two-col{display:flex; gap:3mm;}
 .two-col .tbl-wrap{flex:1; margin-top:0;}
+.two-col .rule-list{flex:1;}
 table.tbl.compact th{padding:1.4mm 1.4mm; font-size:6.2pt;}
 table.tbl.compact td{padding:1mm 1.4mm; font-size:6.6pt;}
 table.tbl.tbl-mini th{padding:1mm 1.2mm !important; font-size:6pt !important; line-height:1.3 !important;}
