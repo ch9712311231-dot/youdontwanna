@@ -76,7 +76,7 @@
 | HTML→PDF 파이프라인 | ✅ 완료 |
 | 웹 브라우저 미리보기(HTML) | ✅ 완료 |
 
-현재 초안: **23페이지**, `output\임용합격로드맵.pdf` / `output\임용합격로드맵_web.html`.
+현재 초안: **27페이지**, `output\임용합격로드맵.pdf` / `output\임용합격로드맵_web.html`.
 남은 유일한 작업은 **PART 2 과목별 원고 반영**뿐이며, 그 외 요청받은 모든 콘텐츠(표지·목차·PART1 ①~⑧)는 실제 데이터 기반으로 완성되어 있습니다.
 
 ## 3. 표지 최종 사양
@@ -135,20 +135,21 @@ C:\임용AtoZ\
 
 ### src\parts\ 목차 매핑 (build_book.js의 manifest 순서 = 실제 페이지 순서)
 
+(2026-07-22 목차 순서 재편 — 아래가 현재 확정된 최신 순서. `05_ch03_korean-history.html`는 더 이상 별도 파일이 아니며, 한국사능력검정 관련 원고는 `04_ch02_basic-conditions.html` 안에 병합되어 있음.)
+
 | 파일 | 목차 위치 |
 |---|---|
 | `00_cover.html` | 표지 |
 | `01_toc.html` | 목차 |
 | `02_part1_cover.html` | PART 1 간지 |
 | `03_ch01_exam-intro.html` | ① 임용 시험이란? |
-| `04_ch02_basic-conditions.html` | ② 중등 임용시험의 기본 조건 (+교원자격이란?) |
-| `05_ch03_korean-history.html` | ③ 한국사능력검정 (오태진 강사 원고, 5페이지) |
-| `06_ch04_subjects-scoring.html` | ④ 시험 과목·문항수·배점·출제범위 |
-| `07_ch05_recruitment-trend.html` | ⑤ 모집인원 추이 (2페이지) |
-| `10_ch06_interview-prep.html` | ⑥ 면접 준비방법 |
+| `04_ch02_basic-conditions.html` | ② 중등 임용시험의 기본 조건 (+교원자격이란?·한국사능력검정시험 포함) |
+| `06_ch04_subjects-scoring.html` | ③ 시험 과목 및 유형별 문항 수·배점·출제범위 |
+| `13_ch09_exam-notice.html` | ④ 응시자 유의사항 (2페이지) |
+| `10_ch06_interview-prep.html` | ⑤ 면접 준비방법 |
+| `07_ch05_recruitment-trend.html` | ⑥ 모집인원 추이 (2024~2026학년도, 2페이지) |
 | `11_ch07_selection-criteria.html` | ⑦ 합격자 선정 방법 (2페이지) |
 | `12_ch08_faq.html` | ⑧ 평가원에 자주 묻는 질문 |
-| `13_ch09_exam-notice.html` | ⑨ 응시자 유의사항 (2페이지) |
 | `08_part2_cover.html` | PART 2 간지 |
 | `09_pedagogy_mockup.html` | PART 2 교육학 가안(레이아웃 템플릿) |
 
