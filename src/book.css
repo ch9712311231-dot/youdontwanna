@@ -281,7 +281,7 @@ h4{font-size:var(--fs-h3); font-weight:800; color:var(--brand-ink); margin:5.5mm
 .plist2 li .pn{flex-shrink:0; width:1.8mm; height:1.8mm; border-radius:50%; background:var(--brand); font-size:0; margin-top:1.5mm;}
 
 /* 박스 없이 나열하는 번호 규정 목록(응시자 유의사항 등) */
-.rule-list{display:flex; flex-direction:column; gap:2mm;}
+.rule-list{display:flex; flex-direction:column; gap:1.3mm;}
 .rule-list .ri{font-size:6.8pt; color:var(--ink-soft); line-height:1.42;}
 .rule-list .ri b{color:var(--brand-deep); font-weight:800; margin-right:1mm;}
 .rule-list .sub{margin:.6mm 0 0 6.6mm; display:flex; flex-direction:column; gap:.5mm;}
