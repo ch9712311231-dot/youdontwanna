@@ -1,4 +1,4 @@
-// src/parts/back-cover.html + src/parts/00_cover.html -> 표지 스프레드(뒤표지-앞표지 한 장)
+// src/parts/back-cover.html + src/parts/01_cover.html -> 표지 스프레드(뒤표지-앞표지 한 장)
 // 인쇄용 PDF(output/표지_스프레드.pdf) + 화면 미리보기(output/표지_스프레드_미리보기.html) 생성.
 // 본문 시퀀스(parts.manifest.js)와 별개 — 실제 인쇄소 임포지션처럼 뒤표지(좌)+앞표지(우)를 한 장으로 합친 별도 산출물.
 const fs = require('fs');
@@ -10,7 +10,7 @@ const root = __dirname;
 const partsDir = path.join(root, 'src', 'parts');
 
 const back = fs.readFileSync(path.join(partsDir, 'back-cover.html'), 'utf8').trim();
-const front = fs.readFileSync(path.join(partsDir, '00_cover.html'), 'utf8').trim();
+const front = fs.readFileSync(path.join(partsDir, '01_cover.html'), 'utf8').trim();
 
 function toDataUri(absPath, mime) {
   const data = fs.readFileSync(absPath);

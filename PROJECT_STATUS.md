@@ -135,23 +135,24 @@ C:\임용AtoZ\
 
 ### src\parts\ 목차 매핑 (build_book.js의 manifest 순서 = 실제 페이지 순서)
 
-(2026-07-22 목차 순서 재편 — 아래가 현재 확정된 최신 순서. `05_ch03_korean-history.html`는 더 이상 별도 파일이 아니며, 한국사능력검정 관련 원고는 `04_ch02_basic-conditions.html` 안에 병합되어 있음.)
+(2026-07-24 파일명을 실제 읽는 순서와 일치하도록 전부 재정렬함 — 파일명 앞 번호 = 목차 순서. 예전 `05_ch03_korean-history.html`는 더 이상 별도 파일이 아니며, 한국사능력검정 관련 원고는 `06_ch02_basic-conditions.html` 안에 병합되어 있음.)
 
 | 파일 | 목차 위치 |
 |---|---|
-| `00_cover.html` | 표지 |
-| `01_toc.html` | 목차 |
-| `02_part1_cover.html` | PART 1 간지 |
-| `03_ch01_exam-intro.html` | ① 임용 시험이란? |
-| `04_ch02_basic-conditions.html` | ② 중등 임용시험의 기본 조건 (+교원자격이란?·한국사능력검정시험 포함) |
-| `06_ch04_subjects-scoring.html` | ③ 시험 과목 및 유형별 문항 수·배점·출제범위 |
-| `13_ch09_exam-notice.html` | ④ 응시자 유의사항 (2페이지) |
-| `10_ch06_interview-prep.html` | ⑤ 면접 준비방법 |
-| `07_ch05_recruitment-trend.html` | ⑥ 모집인원 추이 (2024~2026학년도, 2페이지) |
+| `01_cover.html` | 표지 |
+| `02_headline.html` | 머리말 |
+| `03_toc.html` | 목차 |
+| `04_part1_cover.html` | PART 1 간지 |
+| `05_ch01_exam-intro.html` | ① 임용 시험이란? |
+| `06_ch02_basic-conditions.html` | ② 중등 임용시험의 기본 조건 (+교원자격이란?·한국사능력검정시험 포함) |
+| `07_ch04_subjects-scoring.html` | ③ 시험 과목 및 유형별 문항 수·배점·출제범위 |
+| `08_ch09_exam-notice.html` | ④ 응시자 유의사항 (3페이지) |
+| `09_ch06_interview-prep.html` | ⑤ 면접 준비방법 |
+| `10_ch05_recruitment-trend.html` | ⑥ 모집인원 추이 (2024~2026학년도, 2페이지) |
 | `11_ch07_selection-criteria.html` | ⑦ 합격자 선정 방법 (2페이지) |
 | `12_ch08_faq.html` | ⑧ 평가원에 자주 묻는 질문 |
-| `08_part2_cover.html` | PART 2 간지 |
-| `09_pedagogy_mockup.html` | PART 2 교육학 가안(레이아웃 템플릿) |
+| `13_part2_cover.html` | PART 2 간지 |
+| `14_pedagogy_mockup.html` | PART 2 교육학 가안(레이아웃 템플릿) |
 
 ## 6. 빌드 방법 / 작업 워크플로우
 
@@ -217,7 +218,7 @@ C:\임용AtoZ\
 - **앞표지 보완**: 텍스트 전체를 살짝 좌측으로 이동(`inner` 좌측 패딩 12→8mm), 우측 상단에 QR 코드 자리(추후 홈페이지 바로가기 QR 삽입 예정, `qrspot`) 추가, 하단에 전화번호(홈페이지 주소 위) 추가.
 - **목차(TOC) 헤더 재설계**: 여러 라운드 끝에 사용자가 실제 원본 자료(`해커스임용 합격로드맵 종합편.pdf` 4페이지, 흑백 스캔 `목차.jpg`, 컬러 크롭 `예시.png`)를 근거로 확정 — **자체 제작 SVG 대신 원본 이미지(예시.png)를 그대로 사용**하기로 함. 이미지에서 하늘색·teal 배경만 투명 처리한 아이콘(태그+구름+핀, `assets/img/toc-icon.png`)만 남기고, 뒤에 깔리는 파란 배경은 `book.css`의 `.toc-band`(브랜드 시안, `position:absolute; inset:0`)로 페이지 폭 전체까지 늘림 — 이미지+CSS 배경 레이어 합성 방식.
 - **목차 그룹 헤더**: "PART 1/2" 표기를 "해커스임용 / 합격 로드맵 01·02"(원본 자료와 동일한 라벨 방식)로 변경, 깃발 아이콘 + 설명 텍스트 + 언더라인 형태로 재구성. PART2 과목 목록의 "—" 구분 기호 제거("교육학 합격 전략" 등 심플 표기).
-- **주의**: 표지(`00_cover.html`)나 목차를 고칠 때 `build_web.js`만 돌리면 화면 미리보기의 "표지 임포지션" 블록엔 반영되지만, 본문 덱에 쓰이는 `src/book.html`은 `build_book.js`를 별도로 돌려야 갱신됨 — 이번 세션에서 이걸 빠뜨려 "반영이 안 된다"는 혼선이 한 번 있었음. **표지/목차/본문 아무 파트나 고친 뒤에는 `build_book.js` → `build_web.js` 순서로 항상 같이 돌릴 것.**
+- **주의**: 표지(`01_cover.html`)나 목차를 고칠 때 `build_web.js`만 돌리면 화면 미리보기의 "표지 임포지션" 블록엔 반영되지만, 본문 덱에 쓰이는 `src/book.html`은 `build_book.js`를 별도로 돌려야 갱신됨 — 이번 세션에서 이걸 빠뜨려 "반영이 안 된다"는 혼선이 한 번 있었음. **표지/목차/본문 아무 파트나 고친 뒤에는 `build_book.js` → `build_web.js` 순서로 항상 같이 돌릴 것.**
 - 신규 이미지 자산은 `assets/img/`에 저장(로고 전용이던 `assets/logo/`와 별도 폴더). `build_web.js`/`build_parts_preview.js`의 이미지 인라인 정규식을 `assets/(logo|img)/...` 둘 다 매칭하도록 확장함.
 
 ## 9. 다음 할 일
